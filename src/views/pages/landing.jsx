@@ -1,24 +1,22 @@
 import React from 'react';
+import Store from 'store';
 import UI from 'components/ui';
 
 class Landing extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      email: 'test@theaqua.im'
-    };
-  }
-
   setUser(email) {
     this.setState({ email });
+  }
+
+  update(type) {
+    Store.dispatch({ type });
   }
 
   render() {
     return (
       <section>
-        he: {JSON.stringify(this.state)}
-        <UI.Button onClick={this.setUser.bind(this, 'aha@theaqua.im')}>test</UI.Button>
+        {this.state}
+        <UI.Button onClick={this.update.bind(this, 'INCREMENT')}>+</UI.Button>
+        <UI.Button onClick={this.update.bind(this, 'DECREMENT')}>-</UI.Button>
       </section>
     );
   }

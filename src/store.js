@@ -1,10 +1,10 @@
 import { createStore } from 'redux';
 import counter from 'reducers/counter';
 
-let store = createStore(counter);
+const Store = createStore(counter);
 
-store.subscribe(() =>
-  console.log(store.getState())
+Store.subscribe(() =>
+  console.log(Store.getState())
 );
 
-export default store;
+export default Store;
