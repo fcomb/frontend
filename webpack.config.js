@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 const config = {
   entry: [
@@ -7,7 +8,7 @@ const config = {
     './src/app'
   ],
   output: {
-    path: __dirname + '/build',
+    path: path.join(__dirname, '/build'),
     filename: 'bundle.js'
   },
   module: {
@@ -21,8 +22,8 @@ const config = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.json', '.jsx'],
-    alias: {}
+    root: path.join(__dirname, '/src'),
+    extensions: ['', '.js', '.json', '.jsx']
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
