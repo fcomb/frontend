@@ -10,9 +10,10 @@ class Landing extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <section>
-        is user yep? {this.state.loggedin}
+        is user loggedin? {this.state.loggedin}
       </section>
     )
   }

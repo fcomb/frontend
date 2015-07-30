@@ -1,6 +1,6 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
 
-var config = {
+const config = {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
@@ -16,7 +16,7 @@ var config = {
       {
         test: /(.js|.jsx)/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel?stage=0']
+        loaders: ['react-hot', 'babel?stage=0&cacheDirectory=true']
       }
     ]
   },
@@ -27,7 +27,8 @@ var config = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ]
+  ],
+  devtool: 'source-map'
 };
 
 module.exports = config;
