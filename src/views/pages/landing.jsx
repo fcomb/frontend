@@ -3,8 +3,17 @@ import Store from 'store';
 import UI from 'components/ui';
 
 class Landing extends React.Component {
-  setUser(email) {
-    this.setState({ email });
+  constructor(...args) {
+    super(...args);
+
+    this.state = {};
+  }
+
+  componentDidMount() {
+    Store.subscribe(() => {
+      const counter = Store.getState();
+      this.setState({ counter });
+    });
   }
 
   update(type) {
@@ -14,7 +23,7 @@ class Landing extends React.Component {
   render() {
     return (
       <section>
-        {this.state}
+        {this.state.counter}
         <UI.Button onClick={this.update.bind(this, 'INCREMENT')}>+</UI.Button>
         <UI.Button onClick={this.update.bind(this, 'DECREMENT')}>-</UI.Button>
       </section>
