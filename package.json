@@ -24,7 +24,7 @@
   "scripts": {
     "lint": "$(npm bin)/eslint src",
     "test": "npm run lint",
-    "dev:server": "node webpack.dev-server.js"
+    "dev:server": "node webpack.server.js"
   },
   "repository": {
     "type": "git",
