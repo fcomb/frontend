@@ -5,7 +5,9 @@ class Landing extends React.Component {
     super(props);
 
     this.state = {
-      loggedin: 11
+      user: {
+        email: 'test@theaqua.im'
+      }
     };
   }
 
@@ -13,9 +15,9 @@ class Landing extends React.Component {
     console.log(this.state)
     return (
       <section>
-        is user loggedin? {this.state.loggedin}
+        User: {JSON.stringify(this.state.user)}
       </section>
-    )
+    );
   }
 }
 

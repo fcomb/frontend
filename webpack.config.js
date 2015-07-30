@@ -28,7 +28,7 @@ const config = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
-  devtool: 'source-map'
+  devtool: 'cheap-module-eval-source-map'
 };
 
 module.exports = config;
