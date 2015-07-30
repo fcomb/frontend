@@ -12,7 +12,7 @@ class Landing extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     return (
       <section>
         User: {JSON.stringify(this.state.user)}
