@@ -6,7 +6,7 @@ class List extends Component {
 
     return (
       <ul>
-        {todos.map(todo => <li>{todo.id}: {todo.text}</li>)}
+        {todos.map((todo, index) => <li key={index}>{todo.id}: {todo.text}</li>)}
       </ul>
     );
   }
