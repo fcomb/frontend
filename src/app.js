@@ -1,6 +1,9 @@
 import 'babel-core/polyfill';
 
 import React from 'react';
-import Landing from 'views/pages/landing';
+import App from 'containers/app';
 
-React.render(<Landing />, document.getElementById('app'));
+React.render(
+  <App />,
+  document.getElementById('app')
+);
