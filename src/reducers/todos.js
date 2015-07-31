@@ -1,3 +1,4 @@
+import { handleActions } from 'redux-actions';
 import { ADD_TODO, DELETE_TODO, EDIT_TODO, MARK_TODO, MARK_ALL, CLEAR_MARKED } from 'constants/todos';
 
 const initialState = [{
@@ -6,40 +7,40 @@ const initialState = [{
   id: 0
 }];
 
-export default function todos(state = initialState, action) {
-  switch (action.type) {
-    case ADD_TODO:
-      return [{
-        id: (state.length === 0) ? 0 : state[0].id + 1,
-        marked: false,
-        text: action.text
-      }, ...state];
+const todos = handleActions({
+  [ADD_TODO]: (state, action) => (
+    [{
+      id: (state.length === 0) ? 0 : state[0].id + 1,
+      marked: false,
+      text: action.text
+    }, ...state]
+  ),
 
-    case DELETE_TODO:
-      return state.filter(todo =>
-        todo.id !== action.id
-      );
+  [DELETE_TODO]: (state, action) => (
+    state.filter(todo => todo.id !== action.id)
+  ),
 
-    case EDIT_TODO:
-      return state.map(todo =>
-        todo.id === action.id ? {...todo, text: action.text } : todo
-      );
+  [EDIT_TODO]: (state, action) => (
+    state.map(todo =>
+      todo.id === action.id ? {...todo, text: action.text } : todo
+    )
+  ),
 
-    case MARK_TODO:
-      return state.map(todo =>
-        todo.id === action.id ? {...todo, marked: !todo.marked } : todo
-      );
+  [MARK_TODO]: (state, action) => (
+    state.map(todo =>
+      todo.id === action.id ? {...todo, marked: !todo.marked } : todo
+    )
+  ),
 
-    case MARK_ALL:
-      const areAllMarked = state.every(todo => todo.marked);
-      return state.map(todo =>
-        ({...todo, marked: !areAllMarked })
-      );
+  [MARK_ALL]: (state) => {
+    const areAllMarked = state.every(todo => todo.marked);
 
-    case CLEAR_MARKED:
-      return state.filter(todo => todo.marked === false);
+    return state.map(todo => ({...todo, marked: !areAllMarked }));
+  },
 
-    default:
-      return state;
-  }
-}
+  [CLEAR_MARKED]: (state) => (
+    state.filter(todo => todo.marked === false)
+  )
+}, initialState);
+
+export default todos;
