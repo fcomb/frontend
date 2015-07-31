@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, MARK_TODO, MARK_ALL, CLEAR_MARKED } from 'constants/todos';
+import { ADD, DELETE, EDIT, MARK, MARK_ALL, CLEAR_MARKED } from 'constants/todos';
 
 const initialState = [{
   text: 'Use Redux',
@@ -8,7 +8,7 @@ const initialState = [{
 }];
 
 const todos = handleActions({
-  [ADD_TODO]: (state, action) => (
+  [ADD]: (state, action) => (
     [{
       id: (state.length === 0) ? 0 : state[0].id + 1,
       marked: false,
@@ -16,17 +16,17 @@ const todos = handleActions({
     }, ...state]
   ),
 
-  [DELETE_TODO]: (state, action) => (
+  [DELETE]: (state, action) => (
     state.filter(todo => todo.id !== action.id)
   ),
 
-  [EDIT_TODO]: (state, action) => (
+  [EDIT]: (state, action) => (
     state.map(todo =>
       todo.id === action.id ? {...todo, text: action.text } : todo
     )
   ),
 
-  [MARK_TODO]: (state, action) => (
+  [MARK]: (state, action) => (
     state.map(todo =>
       todo.id === action.id ? {...todo, marked: !todo.marked } : todo
     )

@@ -1,22 +1,22 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, MARK_TODO, MARK_ALL, CLEAR_MARKED } from 'constants/todos';
+import { ADD, DELETE, EDIT, MARK, MARK_ALL, CLEAR_MARKED } from 'constants/todos';
 
 export function addTodo(text) {
   return {
-    type: ADD_TODO,
+    type: ADD,
     text
   };
 }
 
 export function deleteTodo(id) {
   return {
-    type: DELETE_TODO,
+    type: DELETE,
     id
   };
 }
 
 export function editTodo(id, text) {
   return {
-    type: EDIT_TODO,
+    type: EDIT,
     id,
     text
   };
@@ -24,7 +24,7 @@ export function editTodo(id, text) {
 
 export function markTodo(id) {
   return {
-    type: MARK_TODO,
+    type: MARK,
     id
   };
 }

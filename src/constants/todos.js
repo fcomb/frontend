@@ -1,10 +1,10 @@
-export const ADD_TODO = 'ADD_TODO';
-export const DELETE_TODO = 'DELETE_TODO';
-export const EDIT_TODO = 'EDIT_TODO';
-export const MARK_TODO = 'MARK_TODO';
-export const MARK_ALL = 'MARK_ALL';
-export const CLEAR_MARKED = 'CLEAR_MARKED';
+export const ADD = 'todos.add';
+export const DELETE = 'todos.delete';
+export const EDIT = 'todos.edit';
+export const MARK = 'todos.mark';
+export const MARK_ALL = 'todos.mark_all';
+export const CLEAR_MARKED = 'todos.clear_marked';
 
-export const SHOW_ALL = 'SHOW_ALL';
-export const SHOW_MARKED = 'SHOW_MARKED';
-export const SHOW_UNMARKED = 'SHOW_UNMARKED';
+export const SHOW_ALL = 'todos.filter.show_all';
+export const SHOW_MARKED = 'todos.filter.show_marked';
+export const SHOW_UNMARKED = 'todos.filter.show_unmarked';
