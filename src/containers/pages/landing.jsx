@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-// import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
+// import { bindActionCreators } from 'redux';
 // import * as TodoActions from 'actions/todos';
 
 import List from 'components/todos/list';
@@ -20,4 +21,10 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+const reduxConnector = connect((state) => {
+  const { todos } = state;
+
+  return { todos };
+})(Landing);
+
+export default reduxConnector;

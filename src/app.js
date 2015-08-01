@@ -10,6 +10,7 @@ import { history } from 'react-router/lib/BrowserHistory';
 import reducers from 'reducers';
 
 import AppContainer from 'containers/app';
+import LandingContainer from 'containers/pages/landing';
 
 const reducer = combineReducers(reducers);
 const store = createStore(reducer);
@@ -19,7 +20,9 @@ React.render((
   <Provider store={store}>
     {() =>
       <Router history={history}>
-        <Route path="/" component={AppContainer} />
+        <Route component={AppContainer}>
+          <Route path="/" component={LandingContainer} />
+        </Route>
       </Router>
     }
   </Provider>
