@@ -17,7 +17,7 @@ const config = {
       {
         test: /(.js|.jsx)/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel?stage=0&cacheDirectory=true']
+        loaders: ['react-hot', 'babel?cacheDirectory=true']
       }
     ]
   },
@@ -27,7 +27,10 @@ const config = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      __DEV__: JSON.stringify(JSON.parse(process.env.DEV || 'true'))
+    })
   ],
   devtool: 'cheap-module-eval-source-map'
 };
