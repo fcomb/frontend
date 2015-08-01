@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 
 // import * as TodoActions from 'actions/todos';
 
-import Header from 'components/header';
 import List from 'components/todos/list';
 
 class Landing extends Component {
@@ -16,10 +15,7 @@ class Landing extends Component {
     const { todos } = this.props;
 
     return (
-      <div>
-        <Header />
-        <List todos={todos} />
-      </div>
+      <List todos={todos} />
     );
   }
 }

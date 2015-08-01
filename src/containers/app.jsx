@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Landing from './pages/landing';
+import Header from 'components/header';
 
 class AppContainer extends Component {
   static propTypes = {
@@ -12,7 +13,11 @@ class AppContainer extends Component {
     const { todos } = this.props;
 
     return (
-      <Landing todos={todos} />
+      <main>
+        <Header />
+
+        <Landing todos={todos} />
+      </main>
     );
   }
 }
