@@ -6,9 +6,9 @@ import { createStore, combineReducers } from 'redux';
 
 import { history } from 'react-router/lib/BrowserHistory';
 import { reduxRouteComponent } from 'redux-react-router';
-import * as reducers from 'reducers';
+import reducers from 'reducers';
 
-import App from 'containers/app';
+import AppContainer from 'containers/app';
 
 const reducer = combineReducers(reducers);
 const store = createStore(reducer);
@@ -17,7 +17,7 @@ const RouteComponent = reduxRouteComponent(store);
 React.render((
   <Router history={history}>
     <Route component={RouteComponent}>
-      <Route path="/" component={App} />
+      <Route path="/" component={AppContainer} />
     </Route>
   </Router>
 ), document.getElementById('app'));

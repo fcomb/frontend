@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import Landing from './pages/landing';
 
-export default class App extends Component {
-  constructor(...args) {
-    super(...args);
-
-    console.log(...args);
-  }
-
+class AppContainer extends Component {
   render() {
+    console.log(this.props);
     return (
       <Landing />
     );
   }
 }
+
+connect((state) => (state))(AppContainer);
+
+export default AppContainer;
