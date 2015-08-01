@@ -3,14 +3,14 @@ import { ADD, DELETE, EDIT, MARK, MARK_ALL, CLEAR_MARKED } from 'constants/todos
 export function addTodo(text) {
   return {
     type: ADD,
-    text
+    text,
   };
 }
 
 export function deleteTodo(id) {
   return {
     type: DELETE,
-    id
+    id,
   };
 }
 
@@ -18,25 +18,25 @@ export function editTodo(id, text) {
   return {
     type: EDIT,
     id,
-    text
+    text,
   };
 }
 
 export function markTodo(id) {
   return {
     type: MARK,
-    id
+    id,
   };
 }
 
 export function markAll() {
   return {
-    type: MARK_ALL
+    type: MARK_ALL,
   };
 }
 
 export function clearMarked() {
   return {
-    type: CLEAR_MARKED
+    type: CLEAR_MARKED,
   };
 }

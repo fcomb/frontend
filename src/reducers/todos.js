@@ -4,7 +4,7 @@ import { ADD, DELETE, EDIT, MARK, MARK_ALL, CLEAR_MARKED } from 'constants/todos
 const initialState = [{
   text: 'Use Redux',
   marked: false,
-  id: 0
+  id: 0,
 }];
 
 const todos = handleActions({
@@ -12,7 +12,7 @@ const todos = handleActions({
     [{
       id: (state.length === 0) ? 0 : state[0].id + 1,
       marked: false,
-      text: action.text
+      text: action.text,
     }, ...state]
   ),
 
@@ -40,7 +40,7 @@ const todos = handleActions({
 
   [CLEAR_MARKED]: (state) => (
     state.filter(todo => todo.marked === false)
-  )
+  ),
 }, initialState);
 
 export default todos;
