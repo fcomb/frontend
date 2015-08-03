@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
+import cn from 'classnames';
 import { Link } from 'react-router';
 
 class Header extends Component {
+  constructor(...args) {
+    super(...args);
+
+    this.state = {
+      isOpen: false,
+    };
+  }
+
   render() {
     return (
       <nav className="navbar navbar-default">
         <div className="container">
           <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" className={cn('navbar-toggle', 'collapsed')} onClick={::this.toggle}>
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
@@ -16,7 +25,7 @@ class Header extends Component {
             <Link className="navbar-brand" to="/">fcomb</Link>
           </div>
 
-          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
               <li>
                 <Link to="/explore" activeClassName="active">Explore</Link>
@@ -42,6 +51,11 @@ class Header extends Component {
         </div>
       </nav>
     );
+  }
+
+  toggle() {
+    this.setState({ isOpen: !this.state.isOpen });
+    console.log(this.state);
   }
 }
 

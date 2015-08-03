@@ -15,20 +15,13 @@ const config = {
   module: {
     noParse: ['node_modules/react'],
     loaders: [
-      {
-        test: /(.js|.jsx)/,
-        exclude: /node_modules/,
-        loaders: ['react-hot', 'babel?cacheDirectory=true'],
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!sass'),
-      },
-      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: 'url?limit=10000&minetype=application/font-woff' },
-      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,  loader: 'url?limit=10000&minetype=application/font-woff' },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: 'url?limit=10000&minetype=application/octet-stream' },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: 'file' },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: 'url?limit=10000&minetype=image/svg+xml' },
+      { test: /(.js|.jsx)/, exclude: /node_modules/, loaders: ['react-hot', 'babel?cacheDirectory=true'] },
+      { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!sass') },
+      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,  loader: 'url?limit=10000&minetype=application/font-woff' },
+      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&minetype=application/font-woff' },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,   loader: 'url?limit=10000&minetype=application/octet-stream' },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,   loader: 'file' },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,   loader: 'url?limit=10000&minetype=image/svg+xml' },
     ],
   },
   resolve: {
