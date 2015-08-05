@@ -32,8 +32,14 @@ class Header extends Component {
               </li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
+              <li>
+                <Link to="/users/sign_in">Login</Link>
+              </li>
+              <li>
+                <Link to="/users/sign_up">Sign Up</Link>
+              </li>
               <li className="dropdown">
-                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span className="caret"></span></a>
+                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span className="caret"></span></a>
                 <ul className="dropdown-menu">
                   <li><a href="#">Action</a></li>
                   <li><a href="#">Another action</a></li>
