@@ -16,7 +16,7 @@ class Header extends Component {
       <nav className="navbar navbar-default">
         <div className="container">
           <div className="navbar-header">
-            <button type="button" className={cn('navbar-toggle', 'collapsed')} onClick={::this.toggle}>
+            <button type="button" className="navbar-toggle collapsed" onClick={::this.toggle}>
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
@@ -25,17 +25,13 @@ class Header extends Component {
             <Link className="navbar-brand" to="/">fcomb</Link>
           </div>
 
-          <div className="collapse navbar-collapse">
+          <div className={cn('collapse', 'navbar-collapse', { in: this.state.isOpen })}>
             <ul className="nav navbar-nav">
               <li>
                 <Link to="/explore" activeClassName="active">Explore</Link>
               </li>
-              <li>
-                <Link to="/about" activeClassName="active">About</Link>
-              </li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
-              <li><a href="#">Link</a></li>
               <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span className="caret"></span></a>
                 <ul className="dropdown-menu">
@@ -55,7 +51,6 @@ class Header extends Component {
 
   toggle() {
     this.setState({ isOpen: !this.state.isOpen });
-    console.log(this.state);
   }
 }
 
