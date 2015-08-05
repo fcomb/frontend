@@ -33,10 +33,10 @@ class Header extends Component {
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <Link to="/users/sign_in">Login</Link>
+                <Link to="/users/auth">Login</Link>
               </li>
               <li>
-                <Link to="/users/sign_up">Sign Up</Link>
+                <Link to="/users/auth">Sign Up</Link>
               </li>
               <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span className="caret"></span></a>
