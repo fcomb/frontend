@@ -17,12 +17,15 @@ class SignIn extends Component {
 
   render() {
     return (
-      <span onClick={::this.toggleModal}>
-        {this.props.children}
+      <span>
+        <span onClick={::this.toggleModal}>{this.props.children}</span>
         <UI.Modal show={this.state.isOpen} onClose={::this.toggleModal} closeOnOuterClick>
-          <a onClick={::this.toggleModal}>&times;</a>
-
-          <div>hey</div>
+          <div className="f-modal-header">
+            <UI.Button className="f-modal-close" onClick={::this.toggleModal}>&times;</UI.Button>
+          </div>
+          <div className="f-modal-body">
+            <div>hey</div>
+          </div>
         </UI.Modal>
       </span>
     );

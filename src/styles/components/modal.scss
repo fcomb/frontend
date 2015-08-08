@@ -1,3 +1,14 @@
+$modal-zIndex: 1040;
+$modal-size-lg: 900px;
+$modal-size-md: 600px;
+$modal-size-sm: 300px;
+
+@mixin modalSize($size) {
+  .f-modal-content {
+    width: $size;
+  }
+}
+
 .f-modal {
   position: fixed;
   top: 0;
@@ -5,16 +16,39 @@
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.8);
-  z-index: 99999;
+  z-index: 1040;
   opacity: 1;
   transition: opacity 400ms ease-in;
   pointer-events: auto;
 
-  &-body {
-    width: 400px;
+  &-content {
+    width: $modal-size-md;
     position: relative;
     margin: 10% auto;
-    padding: 5px 20px 13px 20px;
+    padding: 2rem;
     background: #fff;
+  }
+
+  &_sm {
+    @include modalSize($modal-size-sm);
+  }
+
+  &_md {
+    @include modalSize($modal-size-md);
+  }
+
+  &_lg {
+    @include modalSize($modal-size-lg);
+  }
+
+  &-close {
+    background-color: transparent;
+    border: 0;
+    font-size: 3rem;
+    line-height: 1;
+    position: absolute;
+    top: -4rem;
+    right: -4rem;
+    color: #fff;
   }
 }

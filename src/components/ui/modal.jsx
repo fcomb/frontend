@@ -21,7 +21,7 @@ class Modal extends Component {
     if (this.props.show) {
       return (
         <div {...this.props} className={cn('f-modal', this.props.className)} onClick={this.hideOnOuterClick} data-modal="true">
-          <div className="f-modal-body">
+          <div className="f-modal-content">
             {this.props.children}
           </div>
         </div>

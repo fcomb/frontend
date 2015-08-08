@@ -37,10 +37,10 @@ class Header extends Component {
             <ul className="nav navbar-nav navbar-right">
               <li>
                 <Modals.SignIn>
-                  <UI.Button className="navbar-button">Login</UI.Button>
+                  <UI.Button className="btn btn-primary navbar-btn">Login</UI.Button>
                 </Modals.SignIn>
               </li>
-              <li className="dropdown">
+              {/* <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span className="caret"></span></a>
                 <ul className="dropdown-menu">
                   <li><a href="#">Action</a></li>
@@ -49,7 +49,7 @@ class Header extends Component {
                   <li role="separator" className="divider"></li>
                   <li><a href="#">Separated link</a></li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
