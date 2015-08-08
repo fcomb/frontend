@@ -1,5 +1,5 @@
-require('bootstrap-sass/assets/stylesheets/_bootstrap.scss');
-require('styles/app.scss');
+import 'bootstrap-sass/assets/stylesheets/_bootstrap';
+import 'styles/app';
 
 import 'babel-core/polyfill';
 

@@ -31,6 +31,7 @@ const config = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
       __DEV__: JSON.stringify(JSON.parse(process.env.DEV || 'true')),
     }),

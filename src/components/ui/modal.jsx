@@ -18,17 +18,13 @@ class Modal extends Component {
   }
 
   render() {
-    if (this.props.show) {
-      return (
-        <div {...this.props} className={cn('f-modal', this.props.className)} onClick={this.hideOnOuterClick} data-modal="true">
-          <div className="f-modal-content">
-            {this.props.children}
-          </div>
+    return (
+      <div {...this.props} className={cn('f-modal', this.props.className, { 'active': this.props.show })} onClick={this.hideOnOuterClick} data-modal="true">
+        <div className="f-modal-content">
+          {this.props.children}
         </div>
-      );
-    } else {
-      return false;
-    }
+      </div>
+    );
   }
 
   hideOnOuterClick(event) {

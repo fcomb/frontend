@@ -10,23 +10,27 @@ $modal-size-sm: 300px;
 }
 
 .f-modal {
+  display: none;
   position: fixed;
   top: 0;
-  right: 0;
   bottom: 0;
   left: 0;
+  right: 0;
   background: rgba(0, 0, 0, 0.8);
-  z-index: 1040;
   opacity: 1;
   transition: opacity 400ms ease-in;
+  z-index: 1040;
   pointer-events: auto;
 
   &-content {
-    width: $modal-size-md;
     position: relative;
-    margin: 10% auto;
-    padding: 2rem;
+    top: -2000px;
     background: #fff;
+    margin: 0 auto;
+    width: $modal-size-md;
+    transition-delay: .5s;
+    transition-duration: .5s;
+    transition-property: top;
   }
 
   &_sm {
@@ -41,14 +45,35 @@ $modal-size-sm: 300px;
     @include modalSize($modal-size-lg);
   }
 
+  &.active {
+    display: block;
+
+    .f-modal-content {
+      top: 10rem;
+    }
+  }
+
   &-close {
-    background-color: transparent;
-    border: 0;
-    font-size: 3rem;
-    line-height: 1;
     position: absolute;
     top: -4rem;
     right: -4rem;
+    font-size: 3rem;
+    background-color: transparent;
     color: #fff;
+    border: 0;
+    line-height: 1;
+  }
+
+  &-header {
+    border-bottom: 1px solid #eee;
+    padding: 1.5rem 2rem;
+
+    &-title {
+      margin: 0;
+    }
+  }
+
+  &-body {
+    padding: 4rem 2rem;
   }
 }
