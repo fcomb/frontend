@@ -50,5 +50,5 @@
     "test": "npm run lint",
     "dev:server": "DEV=1 node webpack.server.js"
   },
-  "pre-commit": "test",
+  "pre-commit": "test"
 }
