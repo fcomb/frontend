@@ -1,3 +1,4 @@
 import Button from './button';
+import Modal from './modal';
 
-export default { Button };
+export default { Button, Modal };

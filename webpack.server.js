@@ -7,7 +7,7 @@ new WebpackDevServer(webpack(config), {
   contentBase: './build',
   hot: true,
   colors: true,
-  historyApiFallback: true
+  historyApiFallback: true,
 }).listen(3000, 'localhost', function(err, result) {
   if (err) {
     return err;

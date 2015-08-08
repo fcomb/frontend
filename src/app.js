@@ -1,4 +1,5 @@
 require('bootstrap-sass/assets/stylesheets/_bootstrap.scss');
+require('styles/app.scss');
 
 import 'babel-core/polyfill';
 

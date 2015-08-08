@@ -12,7 +12,8 @@
     "react-router": "^1.0.0-beta3",
     "redux": "^1.0.0-rc",
     "redux-actions": "^0.7.0",
-    "redux-react-router": "^0.2.1"
+    "redux-react-router": "^0.2.1",
+    "simple-react-modal": "^0.3.1"
   },
   "devDependencies": {
     "babel-eslint": "^4.0.5",

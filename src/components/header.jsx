@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router';
 
+import UI from 'components/ui';
+import Modals from 'components/modals';
+
 class Header extends Component {
   constructor(...args) {
     super(...args);
@@ -33,10 +36,9 @@ class Header extends Component {
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <Link to="/users/auth">Login</Link>
-              </li>
-              <li>
-                <Link to="/users/auth">Sign Up</Link>
+                <Modals.SignIn>
+                  <UI.Button className="navbar-button">Login</UI.Button>
+                </Modals.SignIn>
               </li>
               <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span className="caret"></span></a>
