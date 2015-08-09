@@ -17,20 +17,15 @@ $modal-size-sm: 300px;
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.8);
-  opacity: 1;
-  transition: opacity 400ms ease-in;
   z-index: 1040;
   pointer-events: auto;
 
   &-content {
     position: relative;
-    top: -2000px;
     background: #fff;
     margin: 0 auto;
+    opacity: 0;
     width: $modal-size-md;
-    transition-delay: .5s;
-    transition-duration: .5s;
-    transition-property: top;
   }
 
   &_sm {
@@ -47,10 +42,6 @@ $modal-size-sm: 300px;
 
   &.active {
     display: block;
-
-    .f-modal-content {
-      top: 10rem;
-    }
   }
 
   &-close {
@@ -62,6 +53,16 @@ $modal-size-sm: 300px;
     color: #fff;
     border: 0;
     line-height: 1;
+    transition: color .3s;
+
+    &:hover {
+      color: #848484;
+    }
+
+    &:active,
+    &:focus {
+      outline: 0;
+    }
   }
 
   &-header {

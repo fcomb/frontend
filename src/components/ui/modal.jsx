@@ -1,6 +1,7 @@
 /* Based on https://github.com/zackify/simple-react-modal */
 import React, { Component, PropTypes } from 'react';
 import cn from 'classnames';
+import { Spring } from 'react-motion';
 
 import 'styles/components/modal';
 
@@ -37,12 +38,24 @@ class Modal extends Component {
   }
 
   render() {
+    if (!this.props.show) {
+      return false;
+    }
+
     return (
-      <div {...this.props} className={cn('f-modal', this.props.className, { 'active': this.props.show })} onClick={this.hideOnOuterClick} data-modal="true">
-        <div className="f-modal-content">
-          {this.props.children}
-        </div>
-      </div>
+      <Spring defaultValue={{top: { val: -10 }, opacity: { val: 0 }}} endValue={{top: { val: 10 }, opacity: { val: 1 }}}>
+        {interpolated => {
+          const { top, opacity } = interpolated;
+
+          return (
+            <div {...this.props} className={cn('f-modal', this.props.className, { 'active': this.props.show })} onClick={this.hideOnOuterClick} data-modal="true">
+              <div className="f-modal-content" style={{top: `${top.val}rem`, opacity: opacity.val}}>
+                {this.props.children}
+              </div>
+            </div>
+          );
+        }}
+      </Spring>
     );
   }
 
