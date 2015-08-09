@@ -11,12 +11,29 @@ class Modal extends Component {
     show: PropTypes.bool.isRequired,
     className: PropTypes.string,
     children: PropTypes.node,
+    toggle: PropTypes.func.isRequired,
   }
 
   constructor(props) {
     super(props);
 
     this.hideOnOuterClick = ::this.hideOnOuterClick;
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', ::this.onKeyDown, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', ::this.onKeyDown, false);
+  }
+
+  onKeyDown(e) {
+    const { keyCode } = e;
+
+    if (this.props.show && keyCode === 27) {
+      this.props.toggle();
+    }
   }
 
   render() {
@@ -29,10 +46,10 @@ class Modal extends Component {
     );
   }
 
-  hideOnOuterClick(event) {
+  hideOnOuterClick(e) {
     if (!this.props.closeOnOuterClick) return;
-    if (event.target.dataset.modal) {
-      this.props.onClose(event);
+    if (e.target.dataset.modal) {
+      this.props.onClose(e);
     }
   }
 }
