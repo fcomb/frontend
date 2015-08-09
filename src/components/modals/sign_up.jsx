@@ -23,7 +23,6 @@ class SignUp extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <span>
         <span onClick={::this.toggleModal}>{this.props.children}</span>

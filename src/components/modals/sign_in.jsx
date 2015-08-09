@@ -2,18 +2,25 @@ import React, { Component, PropTypes } from 'react';
 import UI from 'components/ui';
 import Form from 'react-auto-form';
 
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as AuthActions from 'actions/auth';
+import * as UIActions from 'actions/ui';
+
+import { MODAL_SIGN_IN } from 'constants/ui';
+
 class SignIn extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     handleClose: PropTypes.func,
+    actions: PropTypes.object.isRequired,
   }
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      isOpen: false,
-    };
+    this.state = props.ui[MODAL_SIGN_IN];
   }
 
   render() {
@@ -29,16 +36,16 @@ class SignIn extends Component {
           <div className="f-modal-body">
             <div className="row">
               <div className="col-sm-6 col-sm-offset-3">
-                <Form>
+                <Form onSubmit={::this.handleSubmit} trimOnSubmit>
                   <div className="form-group">
-                    <label htmlFor="userEmail">Email address</label>
-                    <input type="email" className="form-control" id="userEmail" placeholder="Email" />
+                    <label htmlFor="email">Email address</label>
+                    <input type="email" className="form-control" id="email" placeholder="Email" />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="userPassword">Password</label>
-                    <input type="email" className="form-control" id="userPassword" placeholder="Password" />
+                    <label htmlFor="password">Password</label>
+                    <input type="password" className="form-control" id="password" placeholder="Password" />
                   </div>
-                  <UI.Button type="submit" kind="primary">Sign Up</UI.Button>
+                  <UI.Button type="submit" kind="primary">Sign In</UI.Button>
                 </Form>
               </div>
             </div>
@@ -48,8 +55,16 @@ class SignIn extends Component {
     );
   }
 
+  handleSubmit(e, data) {
+    e.preventDefault();
+
+    this.props.actions.signIn(data);
+  }
+
   toggleModal() {
     this.setState({ isOpen: !this.state.isOpen }, () => {
+      this.props.actions.updateUI(MODAL_SIGN_IN, this.state);
+
       if (this.props.handleClose) {
         this.props.handleClose(this.state);
       }
@@ -57,4 +72,18 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+// redux
+function mapState(state) {
+  const { auth, ui } = state;
+  return { auth, ui };
+}
+
+function mapDispatch(dispatch) {
+  return {
+    actions: bindActionCreators({ ...AuthActions, ...UIActions }, dispatch),
+  };
+}
+
+const reduxConnector = connect(mapState, mapDispatch)(SignIn);
+
+export default reduxConnector;

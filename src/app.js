@@ -17,7 +17,20 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducers from 'reducers';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+function logger({ getState }) {
+  return (next) => (action) => {
+    console.group('logger');
+    console.info('state: ', getState());
+    console.info('dispatch: ', action);
+    const returnValue = next(action);
+
+    console.info('state: ', getState());
+    console.groupEnd('logger');
+    return returnValue;
+  };
+}
+
+const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
 const reducer = combineReducers(reducers);
 const store = createStoreWithMiddleware(reducer);
 
