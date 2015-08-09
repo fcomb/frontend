@@ -1,17 +1,17 @@
 import React, { Component, PropTypes } from 'react';
-import cn from 'classnames';
 import { Spring } from 'react-motion';
+import cn from 'classnames';
 
 import 'styles/components/modal';
 
 class Modal extends Component {
   static propTypes = {
-    closeOnOuterClick: PropTypes.bool,
-    onClose: PropTypes.func,
     active: PropTypes.bool.isRequired,
+    toggle: PropTypes.func.isRequired,
+    closeOnOuterClick: PropTypes.bool,
     className: PropTypes.string,
     children: PropTypes.node,
-    toggle: PropTypes.func.isRequired,
+    onClose: PropTypes.func,
   }
 
   constructor(props) {
