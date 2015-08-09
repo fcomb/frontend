@@ -36,9 +36,9 @@ class Header extends Component {
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li>
-                <Modals.SignIn>
-                  <UI.Button className="btn btn-primary navbar-btn">Login</UI.Button>
-                </Modals.SignIn>
+                <Modals.SignUp>
+                  <UI.Button className="btn btn-primary navbar-btn">Sign Up</UI.Button>
+                </Modals.SignUp>
               </li>
               {/* <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span className="caret"></span></a>

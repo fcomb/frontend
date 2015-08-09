@@ -1,5 +1,4 @@
 import 'bootstrap-sass/assets/stylesheets/_bootstrap';
-import 'styles/app';
 
 import 'babel-core/polyfill';
 
@@ -9,16 +8,13 @@ import { createStore, combineReducers } from 'redux';
 
 import { Provider } from 'react-redux';
 import { history } from 'react-router/lib/BrowserHistory';
-// import { reduxRouteComponent } from 'redux-react-router';
 import reducers from 'reducers';
 
 import AppContainer from 'containers/app';
 import LandingContainer from 'containers/pages/landing';
-// import AuthContainer from 'containers/users/auth';
 
 const reducer = combineReducers(reducers);
 const store = createStore(reducer);
-// const RouteComponent = reduxRouteComponent(store);
 
 React.render((
   <Provider store={store}>

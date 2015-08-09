@@ -1,4 +1,5 @@
+import Header from './header';
 import Button from './button';
 import Modal from './modal';
 
-export default { Button, Modal };
+export default { Header, Button, Modal };

@@ -7,11 +7,13 @@ class Button extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
+    size: PropTypes.string,
+    kind: PropTypes.string,
   }
 
   render() {
     return (
-      <button {...this.props} className={cn('btn', this.props.className)}>
+      <button {...this.props} className={cn('btn', `btn-${this.props.size}`, `btn-${this.props.kind}`, this.props.className)}>
         {this.props.children}
       </button>
     );

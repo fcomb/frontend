@@ -2,10 +2,16 @@ import React, { Component, PropTypes } from 'react';
 import UI from 'components/ui';
 import Form from 'react-auto-form';
 
-class SignIn extends Component {
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as AuthActions from 'actions/auth';
+
+class SignUp extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     handleClose: PropTypes.func,
+    actions: PropTypes.object.isRequired,
   }
 
   constructor(props) {
@@ -23,22 +29,22 @@ class SignIn extends Component {
 
         <UI.Modal show={this.state.isOpen} onClose={::this.toggleModal} closeOnOuterClick>
           <div className="f-modal-header text-center">
-            <UI.Header className="f-modal-header-title">Sign In</UI.Header>
+            <UI.Header className="f-modal-header-title">Sign Up</UI.Header>
             <UI.Button type="reset" className="f-modal-close" onClick={::this.toggleModal}>&times;</UI.Button>
           </div>
           <div className="f-modal-body">
             <div className="row">
               <div className="col-sm-6 col-sm-offset-3">
-                <Form>
+                <Form onSubmit={::this.handleSubmit} trimOnSubmit>
                   <div className="form-group">
-                    <label htmlFor="userEmail">Email address</label>
-                    <input type="email" className="form-control" id="userEmail" placeholder="Email" />
+                    <label htmlFor="email">Email address</label>
+                    <input type="email" className="form-control" id="email" placeholder="Email" />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="userPassword">Password</label>
-                    <input type="email" className="form-control" id="userPassword" placeholder="Password" />
+                    <label htmlFor="password">Password</label>
+                    <input type="password" className="form-control" id="password" placeholder="Password" />
                   </div>
-                  <UI.Button type="submit" kind="primary">Sign Up</UI.Button>
+                  <UI.Button type="submit" kind="success">Sign Up</UI.Button>
                 </Form>
               </div>
             </div>
@@ -46,6 +52,11 @@ class SignIn extends Component {
         </UI.Modal>
       </span>
     );
+  }
+
+  handleSubmit(e, data) {
+    e.preventDefault();
+    this.props.actions.signUp(data);
   }
 
   toggleModal() {
@@ -57,4 +68,18 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+// redux
+function mapState(state) {
+  const { auth } = state;
+  return { auth };
+}
+
+function mapDispatch(dispatch) {
+  return {
+    actions: bindActionCreators({ ...AuthActions }, dispatch),
+  };
+}
+
+const reduxConnector = connect(mapState, mapDispatch)(SignUp);
+
+export default reduxConnector;

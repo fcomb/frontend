@@ -2,6 +2,8 @@
 import React, { Component, PropTypes } from 'react';
 import cn from 'classnames';
 
+import 'styles/components/modal';
+
 class Modal extends Component {
   static propTypes = {
     closeOnOuterClick: PropTypes.bool,
