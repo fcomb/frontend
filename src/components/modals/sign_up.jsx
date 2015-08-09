@@ -23,6 +23,7 @@ class SignUp extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <span>
         <span onClick={::this.toggleModal}>{this.props.children}</span>
@@ -56,7 +57,15 @@ class SignUp extends Component {
 
   handleSubmit(e, data) {
     e.preventDefault();
-    this.props.actions.signUp(data);
+
+    const { email } = data;
+    const username = email.substr(0, email.indexOf('@'));
+    const user = {
+      username,
+      ...data,
+    };
+
+    this.props.actions.signUp(user);
   }
 
   toggleModal() {

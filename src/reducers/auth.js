@@ -1,12 +1,18 @@
 import { handleActions } from 'redux-actions';
-import { SIGN_UP } from 'constants/auth';
+import { SIGN_UP_SUCCEEDED } from 'constants/auth';
 
 const initialState = {};
 
 const auth = handleActions({
-  [SIGN_UP]: (state, action) => {
-    console.log(state);
-    console.log(action);
+  [SIGN_UP_SUCCEEDED]: (state, action) => {
+    const { email, id, username } = action;
+
+    return {
+      ...state,
+      email,
+      id,
+      username,
+    };
   },
 }, initialState);
 

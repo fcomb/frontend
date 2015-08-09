@@ -12,6 +12,7 @@
     "valid-jsdoc": 2,
     "no-console": 0,
     "no-else-return": 0,
+    "new-cap": 0,
 
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
