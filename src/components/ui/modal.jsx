@@ -1,4 +1,3 @@
-/* Based on https://github.com/zackify/simple-react-modal */
 import React, { Component, PropTypes } from 'react';
 import cn from 'classnames';
 import { Spring } from 'react-motion';
@@ -9,7 +8,7 @@ class Modal extends Component {
   static propTypes = {
     closeOnOuterClick: PropTypes.bool,
     onClose: PropTypes.func,
-    show: PropTypes.bool.isRequired,
+    active: PropTypes.bool.isRequired,
     className: PropTypes.string,
     children: PropTypes.node,
     toggle: PropTypes.func.isRequired,
@@ -32,15 +31,20 @@ class Modal extends Component {
   onKeyDown(e) {
     const { keyCode } = e;
 
-    if (this.props.show && keyCode === 27) {
+    if (this.props.active && keyCode === 27) {
       this.props.toggle();
     }
   }
 
   render() {
-    if (!this.props.show) {
+    if (!this.props.active) {
       return false;
     }
+
+    const className = {
+      'f-modal': true,
+      'active': this.props.active,
+    };
 
     return (
       <Spring defaultValue={{top: { val: -10 }, opacity: { val: 0 }}} endValue={{top: { val: 10 }, opacity: { val: 1 }}}>
@@ -48,7 +52,7 @@ class Modal extends Component {
           const { top, opacity } = interpolated;
 
           return (
-            <div {...this.props} className={cn('f-modal', this.props.className, { 'active': this.props.show })} onClick={this.hideOnOuterClick} data-modal="true">
+            <div {...this.props} className={cn(className, this.props.className)} onClick={this.hideOnOuterClick} data-modal="true">
               <div className="f-modal-content" style={{top: `${top.val}rem`, opacity: opacity.val}}>
                 {this.props.children}
               </div>

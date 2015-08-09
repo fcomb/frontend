@@ -21,7 +21,7 @@ class SignIn extends Component {
       <span>
         <span onClick={::this.toggleModal}>{this.props.children}</span>
 
-        <UI.Modal show={this.state.isOpen} onClose={::this.toggleModal} closeOnOuterClick>
+        <UI.Modal active={this.state.isOpen} onClose={::this.toggleModal} closeOnOuterClick>
           <div className="f-modal-header text-center">
             <UI.Header className="f-modal-header-title">Sign In</UI.Header>
             <UI.Button type="reset" className="f-modal-close" onClick={::this.toggleModal}>&times;</UI.Button>
