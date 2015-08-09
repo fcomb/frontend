@@ -7,7 +7,6 @@ import 'styles/components/modal';
 class Modal extends Component {
   static propTypes = {
     active: PropTypes.bool.isRequired,
-    toggle: PropTypes.func.isRequired,
     closeOnOuterClick: PropTypes.bool,
     className: PropTypes.string,
     children: PropTypes.node,
@@ -32,7 +31,7 @@ class Modal extends Component {
     const { keyCode } = e;
 
     if (this.props.active && keyCode === 27) {
-      this.props.toggle();
+      this.props.onClose();
     }
   }
 
