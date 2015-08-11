@@ -15,20 +15,9 @@ import LandingContainer from 'containers/pages/landing';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import logger from 'redux-diff-logger';
+
 import reducers from 'reducers';
-
-function logger({ getState }) {
-  return (next) => (action) => {
-    console.group('logger');
-    console.info('state: ', getState());
-    console.info('dispatch: ', action);
-    const returnValue = next(action);
-
-    console.info('state: ', getState());
-    console.groupEnd('logger');
-    return returnValue;
-  };
-}
 
 const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
 const reducer = combineReducers(reducers);
