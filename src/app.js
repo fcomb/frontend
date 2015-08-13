@@ -15,11 +15,12 @@ import LandingContainer from 'containers/pages/landing';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import logger from 'redux-diff-logger';
+import logger from 'redux-logger';
+import diffLogger from 'redux-diff-logger';
 
 import reducers from 'reducers';
 
-const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunk, logger, diffLogger)(createStore);
 const reducer = combineReducers(reducers);
 const store = createStoreWithMiddleware(reducer);
 
