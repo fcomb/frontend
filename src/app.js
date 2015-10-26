@@ -1,43 +1,9 @@
-import 'bootstrap-sass/assets/stylesheets/_bootstrap';
-import 'babel-core/polyfill';
+import 'styles/app';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
+import RootContainer from 'containers/root';
 
-// react router
-import { Router, Route } from 'react-router';
-import { history } from 'react-router/lib/BrowserHistory';
-
-// containers
-import AppContainer from 'containers/app';
-import LandingContainer from 'containers/pages/landing';
-
-// redux
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
-import diffLogger from 'redux-diff-logger';
-
-import reducers from 'reducers';
-
-const createStoreWithMiddleware = applyMiddleware(thunk, logger, diffLogger)(createStore);
-const reducer = combineReducers(reducers);
-const store = createStoreWithMiddleware(reducer);
-
-// app
-React.render((
-  <Provider store={store}>
-    {() =>
-      <Router history={history}>
-        <Route component={AppContainer}>
-          <Route path="/" component={LandingContainer} />
-
-          {/* <Route path="/users">
-            <Route path="/sign_in" component={AuthContainer} />
-            <Route path="/sign_up" component={AuthContainer} />
-          </Route> */}
-        </Route>
-      </Router>
-    }
-  </Provider>
-), document.getElementById('app'));
+ReactDOM.render((
+  <RootContainer />
+), document.getElementById(`app`));

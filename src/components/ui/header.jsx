@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import cn from 'classnames';
 
-import 'styles/components/header';
+// import 'styles/components/header';
 
 class Header extends Component {
   static propTypes = {
