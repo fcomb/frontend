@@ -5,7 +5,7 @@
   "main": "build/index.html",
   "dependencies": {
     "classnames": "^2.2.0",
-    "dthttp": "^1.2.3",
+    "dthttp": "^2.0.0-beta10",
     "history": "^1.12.6",
     "react": "^0.14.0",
     "react-auto-form": "^1.2.2",
@@ -33,6 +33,7 @@
     "file-loader": "^0.8.4",
     "html-webpack-plugin": "^1.6.2",
     "postcss-conditionals": "^2.0.0",
+    "postcss-for": "^2.0.0",
     "postcss-import": "^7.1.0",
     "postcss-loader": "^0.7.0",
     "postcss-mathjs": "^1.0.0",
