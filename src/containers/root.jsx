@@ -5,8 +5,7 @@ import { Router, Route } from 'react-router';
 import { createHistory } from 'history';
 
 // containers
-import MainContainer from 'containers/main';
-import LandingContainer from 'containers/pages/landing';
+import Containers from 'containers';
 
 // redux
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
@@ -26,13 +25,19 @@ const store = compose(
 export default () => (
   <Provider store={store}>
     <Router history={history}>
-      <Route component={MainContainer}>
-        <Route path="/" component={LandingContainer} />
+      <Route component={Containers.Main}>
+        <Route path="/" component={Containers.Landing} />
 
-        {/* <Route path="/users">
-          <Route path="/sign_in" component={AuthContainer} />
-          <Route path="/sign_up" component={AuthContainer} />
-        </Route> */}
+        <Route path="/sign_in" />
+        <Route path="/sign_up" />
+
+        <Route path="/containers">
+          <Route path="/create" />
+          <Route path="/:id" />
+        </Route>
+        <Route path="/settings">
+          <Route path="/profile" />
+        </Route>
       </Route>
     </Router>
   </Provider>
