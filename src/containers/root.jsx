@@ -1,7 +1,7 @@
 import React from 'react';
 
 // react router
-import { Router, Route } from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 import { createHistory } from 'history';
 
 // containers
@@ -28,15 +28,15 @@ export default () => (
       <Route component={Containers.Main}>
         <Route path="/" component={Containers.Landing} />
 
-        <Route path="/sign_in" />
-        <Route path="/sign_up" />
+        <Route path="/sign_in" component={Containers.User.SignIn} />
+        <Route path="/sign_up" component={Containers.User.SignUp} />
 
         <Route path="/containers">
-          <Route path="/create" />
-          <Route path="/:id" />
+          <IndexRoute component={Containers.Containers.List} />
+          <Route path=":id" component={Containers.Containers.Id} />
         </Route>
         <Route path="/settings">
-          <Route path="/profile" />
+          <Route path="profile" />
         </Route>
       </Route>
     </Router>
