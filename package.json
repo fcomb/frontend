@@ -4,6 +4,8 @@
   "description": "",
   "main": "build/index.html",
   "dependencies": {
+    "@react-ui/core": "0.0.8",
+    "@react-ui/theme-default": "0.0.6",
     "classnames": "^2.2.0",
     "dthttp": "^2.0.0-beta10",
     "history": "^1.12.6",
