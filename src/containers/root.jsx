@@ -35,6 +35,7 @@ export default () => (
           <IndexRoute component={Containers.Containers.List} />
           <Route path=":id" component={Containers.Containers.Id} />
         </Route>
+
         <Route path="/settings">
           <Route path="profile" />
         </Route>

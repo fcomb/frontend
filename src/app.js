@@ -1,4 +1,5 @@
-import 'styles/app';
+import 'normalize.css';
+import 'styles/base';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

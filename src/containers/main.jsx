@@ -1,15 +1,16 @@
 import React from 'react';
 import UI from 'components/ui';
+const { Grid: { Container, Row, Col } } = UI;
 
 export default (props) => (
   <section>
-    <UI.Container>
-      <UI.Row>
-        <UI.Col xs="12" sm="6" md="5">
+    <Container>
+      <Row>
+        <Col xs="12" sm="6" md="5">
           navbar
-        </UI.Col>
-      </UI.Row>
-    </UI.Container>
+        </Col>
+      </Row>
+    </Container>
 
     {props.children}
   </section>

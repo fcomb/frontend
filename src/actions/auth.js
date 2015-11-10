@@ -1,7 +1,7 @@
 import { fcomb } from 'configs/sources';
 import {
   SIGN_UP_SUCCEEDED, SIGN_UP_FAILED,
-  SIGN_IN_SUCCEEDED, SIGN_IN_FAILED
+  SIGN_IN_SUCCEEDED, SIGN_IN_FAILED,
 } from 'constants/auth';
 
 // sign in
@@ -21,7 +21,7 @@ function signInFailed(response) {
 
 function signIn(userData) {
   return (dispatch) => {
-    return fcomb.post('sessions', userData).then(
+    return fcomb.post(`sessions`, userData).then(
       response => dispatch(signInSucceeded(response)),
       response => dispatch(signInFailed(response.errors)),
     );
@@ -45,7 +45,7 @@ function signUpFailed(errors) {
 
 function signUp(userData) {
   return (dispatch) => {
-    return fcomb.post('users/sign_up', userData).then(
+    return fcomb.post(`users/sign_up`, userData).then(
       response => dispatch(signUpSucceeded(response)),
       response => dispatch(signUpFailed(response.errors))
     );
