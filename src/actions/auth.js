@@ -1,55 +1,56 @@
-import { fcomb } from 'configs/sources';
-import {
-  SIGN_UP_SUCCEEDED, SIGN_UP_FAILED,
-  SIGN_IN_SUCCEEDED, SIGN_IN_FAILED,
-} from 'constants/auth';
+import { fcomb } from 'api';
+import * as types from 'constants/auth';
 
 // sign in
-function signInSucceeded(response) {
-  return {
-    type: SIGN_IN_SUCCEEDED,
-    ...response,
-  };
-}
+const signInStarted = () => ({
+  type: types.SIGN_IN,
+});
 
-function signInFailed(response) {
-  return {
-    type: SIGN_IN_FAILED,
-    ...response,
-  };
-}
+const signInSucceeded = ({ token }) => ({
+  type: types.SIGN_IN_SUCCEEDED,
+  token,
+});
+
+const signInFailed = ({ errors }) => ({
+  type: types.SIGN_IN_FAILED,
+  errors,
+});
+
+// sign up
+const signUpStarted = () => ({
+  type: types.SIGN_UP,
+});
+
+const signUpSucceeded = ({ id }) => ({
+  type: types.SIGN_UP_SUCCEEDED,
+  id,
+});
+
+const signUpFailed = ({ errors }) => ({
+  type: types.SIGN_UP_FAILED,
+  errors,
+});
 
 function signIn(userData) {
   return (dispatch) => {
+    dispatch(signInStarted());
+
     return fcomb.post(`sessions`, userData).then(
-      response => dispatch(signInSucceeded(response)),
-      response => dispatch(signInFailed(response.errors)),
+      ({ body }) => dispatch(signInSucceeded(body)),
+      ({ body }) => dispatch(signInFailed(body))
     );
-  };
-}
-
-// sign up
-function signUpSucceeded(response) {
-  return {
-    type: SIGN_UP_SUCCEEDED,
-    ...response,
-  };
-}
-
-function signUpFailed(errors) {
-  return {
-    type: SIGN_UP_FAILED,
-    ...errors,
   };
 }
 
 function signUp(userData) {
   return (dispatch) => {
+    dispatch(signUpStarted());
+
     return fcomb.post(`users/sign_up`, userData).then(
-      response => dispatch(signUpSucceeded(response)),
-      response => dispatch(signUpFailed(response.errors))
+      ({ body }) => dispatch(signUpSucceeded(body)),
+      ({ body }) => dispatch(signUpFailed(body))
     );
   };
 }
 
-export { signUp, signIn };
+export { signIn, signUp };

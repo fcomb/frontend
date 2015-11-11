@@ -11,11 +11,12 @@ import Containers from 'containers';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+import createLogger from 'redux-logger';
 
 import reducers from 'reducers';
 
 const history = createHistory();
+const logger = createLogger();
 const reducer = combineReducers(reducers);
 const store = compose(
   applyMiddleware(thunk, logger),

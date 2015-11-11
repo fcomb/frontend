@@ -1,31 +1,38 @@
 import { handleActions } from 'redux-actions';
-import { SIGN_UP_SUCCEEDED, SIGN_IN_SUCCEEDED } from 'constants/auth';
+import * as types from 'constants/auth';
 
 const initialState = {};
 
 const auth = handleActions({
-  [SIGN_UP_SUCCEEDED]: (state, action) => {
-    const { email, id, username } = action;
+  // [types.SIGN_UP_SUCCEEDED]: (state, action) => {
+  //   const { email, id, username } = action;
+  //
+  //   return {
+  //     ...state,
+  //     email,
+  //     id,
+  //     username,
+  //   };
+  // },
 
-    return {
-      ...state,
-      email,
-      id,
-      username,
-    };
-  },
+  [types.SIGN_IN]: (state) => ({
+    ...state,
+    inProccess: true,
+  }),
 
-  [SIGN_IN_SUCCEEDED]: (state, action) => {
-    const { email, id, username, token } = action;
+  [types.SIGN_IN_SUCCEEDED]: (state, { token }) => ({
+    ...state,
+    inProccess: false,
 
-    return {
-      ...state,
-      email,
-      id,
-      username,
-      token,
-    };
-  },
+    token,
+  }),
+
+  [types.SIGN_IN_FAILED]: (state, { errors }) => ({
+    ...state,
+    inProccess: false,
+
+    errors,
+  }),
 }, initialState);
 
 export default auth;

@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
-import { Grid, Form, Button } from 'components/ui';
+import UI from 'components/ui';
 
-const { Row, Col } = Grid;
-const { Input, Group } = Form;
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as AuthActions from 'actions/auth';
+
+const {
+  Grid, Grid: { Row, Col },
+  Form, Form: { Input, Group},
+  Button,
+} = UI;
 const styles = {};
 
-export default class extends Component {
+class SignInContainer extends Component {
   handleOnSubmit(e, data) {
     e.preventDefault();
 
-    console.log(data);
+    this.props.actions.signIn(data);
   }
 
   render() {
@@ -38,3 +45,13 @@ export default class extends Component {
     );
   }
 }
+
+const mapState = ({ auth }) => ({
+  state: { auth },
+});
+
+const mapDispatch = (dispatch) => ({
+  actions: bindActionCreators(AuthActions, dispatch),
+});
+
+export default connect(mapState, mapDispatch)(SignInContainer);
