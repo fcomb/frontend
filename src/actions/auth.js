@@ -53,4 +53,17 @@ function signUp(userData) {
   };
 }
 
-export { signIn, signUp };
+// proof of concept
+function signIn2() {
+  return [{
+    type: types.SIGN_IN,
+  }, {
+    type: types.SIGN_IN_SUCCEEDED,
+    fields: [`token`],
+  }, {
+    type: types.SIGN_IN_FAILED,
+    fields: [`id`],
+  }];
+}
+
+export { signIn, signIn2, signUp };
