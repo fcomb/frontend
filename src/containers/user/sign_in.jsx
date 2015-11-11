@@ -5,12 +5,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as AuthActions from 'actions/auth';
 
+import styles from 'styles/login';
+
 const {
   Grid, Grid: { Row, Col },
   Form, Form: { Input, Group},
   Button,
 } = UI;
-const styles = {};
 
 class SignInContainer extends Component {
   handleOnSubmit(e, data) {
