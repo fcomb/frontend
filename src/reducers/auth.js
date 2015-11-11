@@ -4,16 +4,24 @@ import * as types from 'constants/auth';
 const initialState = {};
 
 const auth = handleActions({
-  // [types.SIGN_UP_SUCCEEDED]: (state, action) => {
-  //   const { email, id, username } = action;
-  //
-  //   return {
-  //     ...state,
-  //     email,
-  //     id,
-  //     username,
-  //   };
-  // },
+  [types.SIGN_UP]: (state) => ({
+    ...state,
+    inProccess: true,
+  }),
+
+  [types.SIGN_UP_SUCCEEDED]: (state, { id }) => ({
+    ...state,
+    inProccess: false,
+
+    id,
+  }),
+
+  [types.SIGN_UP_FAILED]: (state, { errors }) => ({
+    ...state,
+    inProccess: false,
+
+    errors,
+  }),
 
   [types.SIGN_IN]: (state) => ({
     ...state,
