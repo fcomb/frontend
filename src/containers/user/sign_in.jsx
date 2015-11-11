@@ -25,7 +25,7 @@ class SignInContainer extends Component {
         <Row>
           <Col sm="4" smOffset="4">
             <div className={styles.panel}>
-              <h3 className={styles.textCenter}>Log In</h3>
+              <h3 className={styles.textCenter}>Log In {this.props.state.auth.inProccess && <span>LOADING</span>}</h3>
 
               <Form.Container onSubmit={::this.handleOnSubmit}>
                 <Group size="lg">
