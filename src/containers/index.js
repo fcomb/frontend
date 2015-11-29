@@ -1,17 +1,14 @@
 import Root from './root';
-import Main from './main';
 
-import Landing from './pages/landing';
-
-import User from './user';
+import Dashboard from './dashboard';
+import Auth from './auth';
 import Containers from './containers';
 
 export default {
   Root,
-  Main,
 
-  Landing,
+  Dashboard,
 
-  User,
+  Auth,
   Containers,
 };

@@ -3,8 +3,8 @@ import 'styles/base';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RootContainer from 'containers/root';
+import App from 'containers/app';
 
 ReactDOM.render((
-  <RootContainer />
+  <App />
 ), document.getElementById(`app`));

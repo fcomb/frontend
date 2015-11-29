@@ -4,12 +4,12 @@ const path    = require('path');
 const config = {
   entry: [
     'webpack-hot-middleware/client',
-    path.join(__dirname, 'src', 'app'),
+    path.join(__dirname, 'src', 'index'),
   ],
   output: {
     path: path.join(__dirname, 'src'),
-    filename: 'app.js',
-    publicPath: '/static/',
+    filename: 'index.js',
+    publicPath: '/',
   },
   module: {
     noParse: ['node_modules/react'],

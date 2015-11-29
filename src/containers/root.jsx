@@ -1,46 +1,17 @@
 import React from 'react';
+import UI from 'components/ui';
+const { Grid: { Container, Row, Col } } = UI;
 
-// react router
-import { Router, Route, IndexRoute } from 'react-router';
-import { createHistory } from 'history';
+export default (props) => (
+  <section>
+    <Container>
+      <Row>
+        <Col xs="12" sm="6" md="5">
+          navbar
+        </Col>
+      </Row>
+    </Container>
 
-// containers
-import Containers from 'containers';
-
-// redux
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
-
-import reducers from 'reducers';
-
-const history = createHistory();
-const logger = createLogger();
-const reducer = combineReducers(reducers);
-const store = compose(
-  applyMiddleware(thunk, logger),
-)(createStore)(reducer);
-
-// app
-export default () => (
-  <Provider store={store}>
-    <Router history={history}>
-      <Route component={Containers.Main}>
-        <Route path="/" component={Containers.Landing} />
-
-        <Route path="/sign_in" component={Containers.User.SignIn} />
-        <Route path="/sign_up" component={Containers.User.SignUp} />
-
-        <Route path="/containers">
-          <IndexRoute component={Containers.Containers.List} />
-          <Route path=":id" component={Containers.Containers.Id} />
-        </Route>
-
-        <Route path="/settings">
-          <Route path="profile" />
-        </Route>
-      </Route>
-    </Router>
-  </Provider>
+    {props.children}
+  </section>
 );
