@@ -33,12 +33,8 @@ const config = {
   ],
   postcss: [
     require('postcss-import'),
-    // require('postcss-use')({ modules: ['autoprefixer']}),
     require('postcss-sassy-mixins'),
-    require('postcss-for'),
-    require('postcss-conditionals'),
     require('postcss-simple-vars'),
-    require('postcss-mathjs'),
     require('postcss-nested'),
     require('autoprefixer')({ browsers: ['last 2 versions'] }),
   ],

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, IndexRoute } from 'react-router';
+import { Router, Route, IndexRoute, Redirect } from 'react-router';
 import { createHistory } from 'history';
 
 import Containers from 'containers';
@@ -12,7 +12,7 @@ export default () => (
     <Route path="/sign_up" component={Containers.Auth.SignUp} />
 
     <Route component={Containers.Root}>
-      <Route path="/" component={Containers.Dashboard} />
+      <Redirect from="/" to="/containers" />
 
       <Route path="/containers">
         <IndexRoute component={Containers.Containers.List} />
