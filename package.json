@@ -4,8 +4,8 @@
   "description": "",
   "main": "build/index.html",
   "dependencies": {
-    "@react-ui/core": "0.0.23",
-    "@react-ui/theme-default": "0.0.14",
+    "@react-ui/core": "0.0.25",
+    "@react-ui/theme-default": "0.0.16",
     "classnames": "2.2.1",
     "dthttp": "2.0.0-beta15",
     "history": "1.13.1",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@dtrussia/eslint-config-dtrussia": "1.0.3",
-    "autoprefixer": "6.1.1",
+    "autoprefixer": "6.1.2",
     "babel-core": "6.2.1",
     "babel-eslint": "5.0.0-beta4",
     "babel-loader": "6.2.0",
@@ -48,7 +48,7 @@
     "url-loader": "0.5.7",
     "webpack": "1.12.9",
     "webpack-dev-middleware": "1.4.0",
-    "webpack-hot-middleware": "2.5.1"
+    "webpack-hot-middleware": "2.6.0"
   },
   "repository": {
     "type": "git",
