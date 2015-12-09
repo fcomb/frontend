@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
+
 import UI from 'components/ui';
 const { Grid, Table } = UI;
+
+import styles from 'styles/containers';
 
 export default () => (
   <Grid.Container>
@@ -17,9 +20,9 @@ export default () => (
             <Table.Heading width="7%">Memory</Table.Heading>
             <Table.Heading width="7%">Disk</Table.Heading>
           </Table.Row>
-          {[{ id: 1, name: `first` }, { id: 2, name: `second` }].map(({ id, name }) => (
-            <Table.Row>
-              <Table.Cell>ok</Table.Cell>
+          {[{ id: 1, name: `first`, state: `online` }, { id: 2, name: `second`, state: `offline` }].map(({ id, name, state }) => (
+            <Table.Row key={id}>
+              <Table.Cell className={styles[state]}>dot</Table.Cell>
               <Table.Cell>
                 <Link to={`/containers/${id}`}>{name}</Link>
               </Table.Cell>

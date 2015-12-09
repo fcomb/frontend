@@ -1,0 +1,9 @@
+@import './variables';
+
+.online {
+  color: $brand-success;
+}
+
+.offline {
+  color: $brand-danger;
+}
