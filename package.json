@@ -4,11 +4,11 @@
   "description": "",
   "main": "build/index.html",
   "scripts": {
-    "clean": "rimraf build",
+    "clean": "$(npm bin)/rimraf build",
     "start": "APP_ENV=development NODE_ENV=development TEST_ENV=false BABEL_DISABLE_CACHE=1 PORT=3000 $(npm bin)/babel-node webpack.server.dev.js",
     "start:production": "APP_ENV=production NODE_ENV=development BABEL_DISABLE_CACHE=1 PORT=3000 $(npm bin)/babel-node webpack.server.dev.js",
     "build": "NODE_ENV=production $(npm bin)/webpack -p --config webpack.build.production.js",
-    "lint": "eslint --ext .jsx --ext .js src",
+    "lint": "$(npm bin)/eslint --ext .jsx --ext .js src",
     "test": "npm run lint",
     "test:production": "exit 0",
     "precommit": "npm test"
