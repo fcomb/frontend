@@ -3,7 +3,7 @@ import * as types from 'constants/auth';
 
 const initialState = {};
 
-const auth = handleActions({
+export const auth = handleActions({
   [types.SIGN_UP]: () => ({
     inProccess: true,
   }),
@@ -20,13 +20,13 @@ const auth = handleActions({
     inProccess: true,
   }),
 
-  [types.SIGN_IN_SUCCEEDED]: (state, { token }) => ({
+  [types.SIGN_IN_SUCCEEDED]: (state, { token, email, username }) => ({
     token,
+    email,
+    username,
   }),
 
   [types.SIGN_IN_FAILED]: (state, { errors }) => ({
     errors,
   }),
 }, initialState);
-
-export default auth;

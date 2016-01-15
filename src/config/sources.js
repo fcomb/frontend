@@ -8,8 +8,8 @@ function httpCodesMiddleware({ response, resolve, reject }) {
   }
 }
 
-const api = new dtHttp(`https://api.api.io/v1/`);
+const api = new dtHttp(`https://api.fcomb.io/v1/`);
 api.setHeader(`Content-Type`, `application/json`);
 api.applyMiddleware(httpCodesMiddleware);
 
-export default { api };
+export { api };

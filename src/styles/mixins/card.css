@@ -1,0 +1,13 @@
+@mixin card-variant($color, $color-darker, $color-absolute) {
+  background-color: $color;
+  color: $color-absolute;
+
+  &:hover {
+    background-color: $color-darker;
+    color: $color-absolute;
+  }
+
+  .titleDarken {
+    background-color: $color-darker;
+  }
+}

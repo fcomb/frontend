@@ -1,0 +1,130 @@
+@import './mixins/button';
+@import '../variables';
+
+$btn-xs-padding: .7rem 1.4rem;
+$btn-xs-font-size: 1rem;
+
+$btn-sm-padding: .8rem 1.6rem;
+$btn-sm-font-size: 1.2rem;
+
+$btn-md-padding: .9rem 2rem;
+$btn-md-font-size: 1.4rem;
+
+$btn-lg-padding: 1.5rem 1.7rem;
+$btn-lg-font-size: 1.3rem;
+
+$default-border-radius: 5rem;
+
+.btn {
+  display: inline-block;
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 400;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: 0px .5rem 1.5rem 0px #B3B3B3;
+  color: #111;
+  cursor: pointer;
+  padding: .8rem 1.6rem;
+  margin-bottom: 0;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  border-radius: $default-border-radius;
+  line-height: 1;
+  text-align: center;
+  transition: all 0.3s;
+  vertical-align: middle;
+  white-space: nowrap;
+  touch-action: manipulation;
+
+  &[disabled] {
+    opacity: .5;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: color(#eee blackness(10%));
+    outline: none;
+    text-decoration: none;
+  }
+
+  &:focus,
+  &:active {
+    box-shadow: none;
+    top: 1px;
+  }
+}
+
+.default {
+  @include btn-variant($brand-default, $brand-default-darker);
+}
+
+.primary {
+  @include btn-variant($brand-primary, $brand-primary-darker);
+}
+
+.success {
+  @include btn-variant($brand-success, $brand-success-darker);
+}
+
+/*.info {
+  @include btn-variant($brand-info);
+}
+
+.danger {
+  @include btn-variant($brand-danger);
+}
+
+.warning {
+  @include btn-variant($brand-warning);
+}*/
+
+
+.xs {
+  @include btn-size($btn-xs-padding, $btn-xs-font-size);
+}
+
+.sm {
+  @include btn-size($btn-sm-padding, $btn-sm-font-size);
+}
+
+.md {
+  @include btn-size($btn-md-padding, $btn-md-font-size);
+}
+
+.lg {
+  @include btn-size($btn-lg-padding, $btn-lg-font-size);
+}
+
+.block {
+  display: block;
+  width: 100%;
+}
+
+/* BtnGroup */
+
+.btnGroup {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+
+  .btn {
+    position: relative;
+    margin-left: -1px;
+    border-radius: 0;
+    float: left;
+  }
+
+  .btn:first-child {
+    margin-left: 0;
+    border-radius: $default-border-radius;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .btn:last-child {
+    border-radius: $default-border-radius;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

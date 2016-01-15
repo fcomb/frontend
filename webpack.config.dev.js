@@ -1,44 +1,28 @@
-const webpack = require('webpack');
-const path    = require('path');
+import webpack from 'webpack';
+import config, { isResMatch } from './webpack.config.shared';
 
-const config = {
+export default {
+  ...config,
   entry: [
-    'webpack-hot-middleware/client',
-    path.join(__dirname, 'src', 'index'),
+    ...config.entry,
+    `webpack-hot-middleware/client`,
   ],
   output: {
-    path: path.join(__dirname, 'src'),
-    filename: 'index.js',
-    publicPath: '/',
+    ...config.output,
+    filename: `app.js`,
+    publicPath: `/static/`,
   },
   module: {
-    noParse: ['node_modules/react'],
+    ...config.module,
     loaders: [
-      { test: /(.js|.jsx)/, exclude: /node_modules/, loaders: ['babel?cacheDirectory=true'] },
-      // { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,   loader: 'url?limit=64' },
-      { test: /\.css/, loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss' },
+      ...config.module.loaders,
+      { test: el => (!isResMatch(el, `node_modules`) || isResMatch(el, `@react-ui`)) && isResMatch(el, `.css`), loader: `style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss` },
+      { test: el => (isResMatch(el, `node_modules`) && !isResMatch(el, `@react-ui`)) && isResMatch(el, `.css`), loader: `style!css` },
     ],
   },
-  resolve: {
-    root: path.join(__dirname, 'src'),
-    extensions: ['', '.js', '.json', '.jsx', '.css', '.svg'],
-  },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    ...config.plugins,
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.DefinePlugin({
-      'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
   ],
-  postcss: [
-    require('postcss-import'),
-    require('postcss-sassy-mixins'),
-    require('postcss-simple-vars'),
-    require('postcss-nested'),
-    require('autoprefixer')({ browsers: ['last 2 versions'] }),
-  ],
-  devtool: 'cheap-module-eval-source-map',
+  devtool: `cheap-module-eval-source-map`,
 };
-
-module.exports = config;

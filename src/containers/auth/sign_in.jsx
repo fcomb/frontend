@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
-import UI from 'components/ui';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { pushPath } from 'redux-simple-router';
 import * as AuthActions from 'actions/auth';
 
+import UI from 'components/ui';
 import styles from 'styles/login';
 
 const {
   Grid, Grid: { Row, Col },
-  Form, Form: { Input, Group},
+  Form, Form: { Input, Group },
   Button,
 } = UI;
 
 class SignInContainer extends Component {
+  componentWillReceiveProps(props) {
+    if (props.state.auth.token && this.props.state.auth.token !== props.state.auth.token) {
+      this.props.actions.pushPath(`/`);
+    }
+  }
+
   handleOnSubmit(e, data) {
     e.preventDefault();
 
@@ -52,7 +59,7 @@ const mapState = ({ auth }) => ({
 });
 
 const mapDispatch = (dispatch) => ({
-  actions: bindActionCreators(AuthActions, dispatch),
+  actions: bindActionCreators({ ...AuthActions, pushPath }, dispatch),
 });
 
 export default connect(mapState, mapDispatch)(SignInContainer);

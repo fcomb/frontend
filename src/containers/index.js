@@ -1,11 +1,14 @@
 import Root from './root';
 
-import Auth from './auth';
-import Containers from './containers';
+import * as Auth from './auth';
+import * as Apps from './apps';
+import * as Nodes from './nodes';
 
 export default {
   Root,
 
   Auth,
-  Containers,
+
+  Apps,
+  Nodes,
 };

@@ -1,0 +1,80 @@
+@import './variables';
+@import './mixins/card';
+
+@keyframes marquee {
+  0%   { text-indent: 0rem }
+  100% { text-indent: -35rem }
+}
+
+.title {
+  margin: 0;
+  font-family: monospace;
+  word-wrap: break-word;
+}
+
+.subtitle {
+  font-weight: bolder;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.card {
+  display: block;
+  position: relative;
+  background-color: $brand-default;
+  box-shadow: 0.5rem 1rem 5rem 0px #DCDBDB;
+  color: $brand-default-absolute;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  transition: all .3s;
+
+  &:hover {
+    background-color: $brand-default-darker;
+    color: $brand-default-absolute;
+  }
+
+  &:focus,
+  &:active {
+    top: 1px;
+    box-shadow: none;
+  }
+
+  .titleDarken {
+    background-color: $brand-default-darker;
+    padding: 1rem 2rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+}
+
+.default {
+  @include card-variant($brand-default, $brand-default-darker, $brand-default-absolute);
+}
+
+.primary {
+  @include card-variant($brand-primary, $brand-primary-darker, $brand-primary-absolute);
+}
+
+.success {
+  @include card-variant($brand-success, $brand-success-darker, $brand-success-absolute);
+}
+
+.info {
+  @include card-variant($brand-info, $brand-info-darker, $brand-info-absolute);
+}
+
+.danger {
+  @include card-variant($brand-danger, $brand-danger-darker, $brand-danger-absolute);
+}
+
+.warning {
+  @include card-variant($brand-warning, $brand-warning-darker, $brand-warning-absolute);
+}
+
+.row {
+  margin-bottom: 2rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

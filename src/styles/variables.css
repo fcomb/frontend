@@ -1,12 +1,51 @@
-$brand-primary: #3F51B5;
-$brand-primary-darker: #3949AB;
+/* base */
+$default-background: #f9f9f9;
+$default-line-height: 1.42857143;
 
-$brand-success-ligther: #B9F6CA;
-$brand-success: #00E676;
-$brand-success-dark: #1B5E20;
+/* typography */
+$default-h3-size: 20px;
 
-$brand-danger: #F44336;
+/* brand colors */
+$brand-default: #f9f9f9;
+$brand-default-absolute: #111;
 
+$brand-default-lighter: #f4f4f4;
+$brand-default-darker: #d6d6d6;
+
+$brand-primary: #298eea;
+$brand-primary-absolute: #fff;
+
+$brand-primary-lighter: #4da1ee;
+$brand-primary-darker: #157ad7;
+
+$brand-success: #15cd72;
+$brand-success-absolute: #fff;
+
+$brand-success-lighter: #21e886;
+$brand-success-darker: #13bb68;
+
+$brand-info: #29B6F6;
+$brand-info-absolute: #fff;
+
+$brand-info-lighter: #61c9f8;
+$brand-info-darker: #0999db;
+
+$brand-danger: #f44336;
+$brand-danger-absolute: #fff;
+
+$brand-danger-lighter: #f6665b;
+$brand-danger-darker: #e31b0c;
+
+$brand-warning: #ff8300;
+$brand-warning-absolute: #fff;
+
+$brand-warning-lighter: #ff9627;
+$brand-warning-darker: #eb7900;
+
+/* defaults */
 $gray-lighter: #F5F5F5;
 $gray: #EEEEEE;
 $gray-darker: #9E9E9E;
+
+$brand-white: #fff;
+$brand-black: #111;

@@ -1,0 +1,35 @@
+$size-lg: 90rem;
+$size-md: 60rem;
+$size-sm: 40rem;
+
+.container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  pointer-events: auto;
+  overflow: scroll;
+}
+
+.content {
+  position: relative;
+  background: #fff;
+  margin: 0 auto 1rem;
+  width: $size-md;
+  padding: 1.5rem 2rem;
+  top: 10rem;
+}
+
+.lg {
+  width: $size-lg;
+}
+
+.md {
+  width: $size-md;
+}
+
+.sm {
+  width: $size-sm;
+}

@@ -1,15 +1,27 @@
+// our god
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+
+// middlewares
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 
-import reducers from 'reducers';
+// utils
+import { autoRehydrate } from 'redux-persist';
 
-const reducer = combineReducers(reducers);
+// 3rd-party reducers
+import { routeReducer } from 'redux-simple-router';
+
+import * as localReducers from 'reducers';
+
+const reducers = {
+  ...localReducers,
+  routing: routeReducer,
+};
+
 const logger = createLogger();
+const reducer = combineReducers(reducers);
 
-const store = compose(
-  // autoRehydrate(),
+export const store = compose(
+  autoRehydrate(),
   applyMiddleware(thunk, logger),
 )(createStore)(reducer);
-
-export default store;

@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import Helmet from 'react-helmet';
+
 import Header from 'components/header';
 
-export default (props) => (
-  <section>
-    <Header />
+class RootContainer extends Component {
+  render() {
+    const { children, ...props } = this.props;
 
-    {props.children}
-  </section>
-);
+    return (
+      <section>
+        <Helmet title="fcomb" titleTemplate="%s | f.containers" />
+        <Header {...props} />
+
+        {React.cloneElement(children, props)}
+      </section>
+    );
+  }
+}
+
+const mapState = ({ auth }) => ({
+  user: auth,
+});
+
+export default connect(mapState)(RootContainer);
