@@ -32,7 +32,7 @@ class NodesContainer extends Component {
                 <h1 className={styles.headerTitle}>Nodes</h1>
               </Grid.Col>
               <Grid.Col xs={10} className={styles.textRight}>
-                <Modal size="lg" openByClickOn={<Button kind="success" size="lg" className={styles.headerButton}>Connect Node</Button>} closeOnEsc closeOnOutsideClick>
+                <Modal size="lg" openByClickOn={<Button kind="success" size="lg" className={styles.headerButton}>Connect New Node</Button>} closeOnEsc closeOnOutsideClick>
                   <pre style={{ whiteSpace: `normal`, textAlign: `center` }}>curl -Ls https://agent.fcomb.io/ | sudo -H sh -s tkn_j2UESTi9IA944HLYJG2SCZNfa5o5kZFy66Co3sz3lbDDLFqueej8Ailv5eK5faycs0oaW0wis2aj6Ed2yeS9Hu2quicH5Gis</pre>
                 </Modal>
               </Grid.Col>
