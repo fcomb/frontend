@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
+import postcssImport from 'postcss-import';
 
 export const isResMatch = (res, match) => res.indexOf(match) !== -1;
 
@@ -28,8 +29,11 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.DedupePlugin(),
   ],
-  postcss: [
-    require(`postcss-import`),
+
+  postcss: (wbpck) => ([
+    postcssImport({
+      addDependencyTo: wbpck,
+    }),
     require(`postcss-sassy-mixins`),
     require(`postcss-for`),
     require(`postcss-conditionals`),
@@ -40,12 +44,13 @@ export default {
     require(`autoprefixer`)({
       browsers: [`last 2 versions`],
     }),
-  ],
+  ]),
+
   svgoIcons: {
     plugins: [
       {
         removeAttrs: {
-          attrs: [ `fill`, `fill-rule` ],
+          attrs: [`fill`, `fill-rule`],
         },
       },
     ],
