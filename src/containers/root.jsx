@@ -14,14 +14,14 @@ class RootContainer extends Component {
         <Helmet title="fcomb" titleTemplate="%s | f.containers" />
         <Header {...props} />
 
-        {React.cloneElement(children, props)}
+        {children}
       </section>
     );
   }
 }
 
-const mapState = ({ auth }) => ({
-  user: auth,
+const mapState = ({ users }) => ({
+  users,
 });
 
 export default connect(mapState)(RootContainer);

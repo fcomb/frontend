@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as NodesActions from 'actions/nodes'; // FIXME: need to be * as
+import * as NodesActions from 'actions/nodes';
 
 import List from 'components/nodes/list';
 
@@ -33,7 +33,7 @@ class NodesContainer extends Component {
               </Grid.Col>
               <Grid.Col xs={10} className={styles.textRight}>
                 <Modal size="lg" openByClickOn={<Button kind="success" size="lg" className={styles.headerButton}>Connect New Node</Button>} closeOnEsc closeOnOutsideClick>
-                  <pre style={{ whiteSpace: `normal`, textAlign: `center` }}>curl -Ls https://agent.fcomb.io/ | sudo -H sh -s tkn_j2UESTi9IA944HLYJG2SCZNfa5o5kZFy66Co3sz3lbDDLFqueej8Ailv5eK5faycs0oaW0wis2aj6Ed2yeS9Hu2quicH5Gis</pre>
+                  <pre style={{ whiteSpace: `normal`, textAlign: `center` }}>curl -Ls https://agent.fcomb.io/ | sudo -H sh -s tkn_j2UESTi9IA944HLYJG2SCZNfa5o5kZFy</pre>
                 </Modal>
               </Grid.Col>
             </Grid.Row>

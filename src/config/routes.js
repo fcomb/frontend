@@ -1,16 +1,11 @@
 import React from 'react';
 import { Router, Route, IndexRoute, Redirect } from 'react-router';
-import { createHistory } from 'history';
 
 import Containers from 'containers';
 import { store } from 'config/store';
+import { history } from 'config/history';
 
-export const history = createHistory();
-
-function isLoggedin() {
-  const state = store.getState();
-  return !!state.auth.token;
-}
+const isLoggedin = () => !!store.getState().auth.token;
 
 export default () => (
   <Router history={history}>

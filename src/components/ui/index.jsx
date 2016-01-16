@@ -4,7 +4,6 @@ import ReactUI from '@react-ui/core';
 import themeDefault from '@react-ui/theme-default';
 import * as themeFcomb from 'styles/ui';
 
-console.log(themeFcomb);
 const styles = {
   ...themeDefault,
   ...themeFcomb,

@@ -4,6 +4,20 @@ import Card from './card';
 import UI from 'components/ui';
 const { Grid } = UI;
 
+// const items = [{
+//   publicIpAddress: `255.255.255.255`,
+//   state: `initializing`,
+// }, {
+//   publicIpAddress: `255.255.255.255`,
+//   state: `available`,
+// }, {
+//   publicIpAddress: `255.255.255.255`,
+//   state: `unreachable`,
+// }, {
+//   publicIpAddress: `255.255.255.255`,
+//   state: `upgrading`,
+// }];
+
 export default ({ items }) => (
   <Grid.Container>
     <Grid.Row>

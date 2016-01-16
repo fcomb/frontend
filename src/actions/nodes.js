@@ -20,9 +20,9 @@ export function loadNodes() {
   return (dispatch) => {
     dispatch(loadNodesStarted());
 
-    return api.get(`nodes`).then(
-      ({ body }) => dispatch(loadNodesSucceeded(body)),
-      ({ body }) => dispatch(loadNodesFailed(body))
+    return api.get(`nodes`)
+      .then(({ body }) => dispatch(loadNodesSucceeded(body)))
+      .catch(({ body }) => dispatch(loadNodesFailed(body))
     );
   };
 }

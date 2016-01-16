@@ -5,9 +5,9 @@ import cn from 'classnames';
 import styles from 'styles/card';
 
 const statesToStyles = {
-  initializing: `warning`,
+  initializing: `info`,
   available: `success`,
-  unreachable: `danger`,
+  unreachable: `warning`,
   upgrading: `info`,
   terminating: `warning`,
   terminated: `danger`,
@@ -16,7 +16,7 @@ const statesToStyles = {
 export default ({ data }) => (
   <Link to={`/nodes/${data.id}`} className={cn(styles.card, styles[statesToStyles[data.state]])}>
     <div className={styles.row}>
-      <h6 className={styles.subtitle}>Name</h6>
+      <h6 className={styles.subtitle}>IP address</h6>
       <h3 className={cn(styles.title, styles.titleDarken)}>{data.publicIpAddress}</h3>
     </div>
 

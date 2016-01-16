@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { pushPath } from 'redux-simple-router';
+import { routeActions as RouteActions } from 'redux-simple-router';
 import * as AuthActions from 'actions/auth';
 
 import UI from 'components/ui';
@@ -17,7 +17,7 @@ const {
 class SignInContainer extends Component {
   componentWillReceiveProps(props) {
     if (props.state.auth.token && this.props.state.auth.token !== props.state.auth.token) {
-      this.props.actions.pushPath(`/`);
+      this.props.actions.routePush(`/`);
     }
   }
 
@@ -59,7 +59,7 @@ const mapState = ({ auth }) => ({
 });
 
 const mapDispatch = (dispatch) => ({
-  actions: bindActionCreators({ ...AuthActions, pushPath }, dispatch),
+  actions: bindActionCreators({ ...AuthActions, routePush: RouteActions.push }, dispatch),
 });
 
 export default connect(mapState, mapDispatch)(SignInContainer);

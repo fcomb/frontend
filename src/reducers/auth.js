@@ -20,13 +20,13 @@ export const auth = handleActions({
     inProccess: true,
   }),
 
-  [types.SIGN_IN_SUCCEEDED]: (state, { token, email, username }) => ({
+  [types.SIGN_IN_SUCCEEDED]: (state, { token }) => ({
     token,
-    email,
-    username,
   }),
 
   [types.SIGN_IN_FAILED]: (state, { errors }) => ({
     errors,
   }),
+
+  [types.REMOVE_TOKEN]: () => ({}),
 }, initialState);

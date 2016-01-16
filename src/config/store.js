@@ -8,8 +8,9 @@ import createLogger from 'redux-logger';
 // utils
 import { autoRehydrate } from 'redux-persist';
 
-// 3rd-party reducers
-import { routeReducer } from 'redux-simple-router';
+// router
+import { history } from './history';
+import { syncHistory, routeReducer } from 'redux-simple-router';
 
 import * as localReducers from 'reducers';
 
@@ -20,8 +21,9 @@ const reducers = {
 
 const logger = createLogger();
 const reducer = combineReducers(reducers);
+const routerMiddleware = syncHistory(history);
 
 export const store = compose(
   autoRehydrate(),
-  applyMiddleware(thunk, logger),
+  applyMiddleware(thunk, routerMiddleware, logger),
 )(createStore)(reducer);

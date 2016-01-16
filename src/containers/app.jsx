@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import Routes, { history } from 'config/routes';
+import Routes from 'config/routes';
 
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
-import { syncReduxAndRouter } from 'redux-simple-router';
 
 import { store } from 'config/store';
-import { api } from 'config/sources';
+import { setHTTPAuth } from 'utils/setHTTPAuth';
+
+import * as UsersActions from 'actions/users';
 
 export default class extends Component {
   constructor() {
@@ -16,15 +17,16 @@ export default class extends Component {
   }
 
   componentWillMount() {
-    persistStore(store, { whitelist: [`auth`] }, () => {
+    persistStore(store, { whitelist: [`auth`, `users`] }, () => {
       const { auth } = store.getState();
 
       if (auth.token) {
-        api.setHeader(`Authorization`, `Token ${auth.token}`);
-      }
+        setHTTPAuth(auth.token);
 
-      syncReduxAndRouter(history, store);
-      this.setState({ rehydrated: true });
+        store.dispatch(UsersActions.loadUser(`me`)).then(() => this.setState({ rehydrated: true }));
+      } else {
+        this.setState({ rehydrated: true });
+      }
     });
   }
 

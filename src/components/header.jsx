@@ -4,7 +4,7 @@ import UI from 'components/ui';
 const { Navbar, Grid } = UI;
 import styles from 'styles/ui/navbar';
 
-export default ({ user }) => (
+export default ({ users }) => (
   <header>
     <Grid.Container>
       <Navbar.Container>
@@ -16,7 +16,7 @@ export default ({ user }) => (
         </Navbar.Menu>
 
         <Navbar.Menu right>
-          <Navbar.Link to="/me">{user.username}</Navbar.Link>
+          <Navbar.Link to="/account">{users.me.data.username}</Navbar.Link>
         </Navbar.Menu>
       </Navbar.Container>
     </Grid.Container>
