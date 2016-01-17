@@ -14,7 +14,7 @@ export default {
     noParse: [`node_modules/react`],
     loaders: [
       { test: /(.js|.jsx)/, exclude: /node_modules/, loaders: [`babel?cacheDirectory=true`] },
-      { test: /src\/[^\/]+\/assets\/icons\/[^\.]+\.svg/, loader: `svg-sprite!svgo?useConfig=svgoIcons` },
+      { test: /src\/assets\/icons\/[^\.]+\.svg/, loader: `svg-sprite!svgo?useConfig=svgoIcons` },
     ],
   },
   stats: {

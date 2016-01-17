@@ -66,6 +66,8 @@
     "react-transform-hmr": "1.0.1",
     "react-transform-render-visualizer": "0.3.0",
     "style-loader": "0.13.0",
+    "svg-sprite-loader": "0.0.16",
+    "svgo-loader": "1.1.0",
     "url-loader": "0.5.7",
     "webpack": "1.12.10",
     "webpack-dev-middleware": "1.4.0",

@@ -1,0 +1,64 @@
+@import '../variables';
+
+.dropdown {
+  position: relative;
+  display: inline-block;;
+  vertical-align: top;
+}
+
+.placeholder {
+  display: block;
+  padding: 1.5rem;
+  min-width: 11rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  text-align: left;
+  background-color: $brand-white;
+  border: 1px solid $gray;
+  border-radius: 0.4rem;
+  cursor: pointer;
+
+  &:focus,
+  &:hover,
+  &.active {
+    border-color: $brand-black;
+  }
+
+  &.active {
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.icon {
+  margin-top: .3rem;
+  margin-left: .4rem;
+  float: right;
+  width: 1.5rem;
+  height: 1.1rem;
+  fill: $brand-black;
+  display: inline-block;
+}
+
+.container {
+  position: absolute;
+  top: 6.5rem;
+  right: 0;
+  z-index: 10;
+  display: block;
+  min-width: 100%;
+  padding: 2.5rem 0;
+  text-align: left;
+  background-color: $brand-white;
+  border: 1px solid $gray;
+  border-radius: 0.4rem;
+  overflow-y: scroll;
+  visibility: hidden;
+  opacity: 0;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}

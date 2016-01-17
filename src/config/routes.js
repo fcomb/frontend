@@ -17,6 +17,17 @@ export default () => (
     <Route component={Containers.Root} onEnter={(state, replace) => (!isLoggedin() && replace(null, `/sign_in`))}>
       <Redirect from="/" to="/nodes" />
 
+      <Route path="/settings" component={Containers.Settings.Root}>
+        <Redirect from="/settings/account" to="/settings/account/profile" />
+        <Route path="account">
+          <Route path="profile" component={Containers.Settings.Account.Profile} />
+
+          {/* <Route path="billing" component={Containers.Settings.Account.Billing} />
+          <Route path="referrals" component={Containers.Settings.Account.Referrals} />
+          <Route path="security" component={Containers.Settings.Account.Security} /> */}
+        </Route>
+      </Route>
+
       <Route path="/nodes">
         <IndexRoute component={Containers.Nodes.List} />
       </Route>

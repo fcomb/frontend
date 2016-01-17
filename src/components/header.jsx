@@ -1,8 +1,9 @@
 import React from 'react';
-import UI from 'components/ui';
+import { Link } from 'react-router';
 
-const { Navbar, Grid } = UI;
+import UI from 'components/ui';
 import styles from 'styles/ui/navbar';
+const { Navbar, Grid, Dropdown } = UI;
 
 export default ({ users }) => (
   <header>
@@ -16,7 +17,16 @@ export default ({ users }) => (
         </Navbar.Menu>
 
         <Navbar.Menu right>
-          <Navbar.Link to="/account">{users.me.data.username}</Navbar.Link>
+          <Dropdown placeholder={users.me.data.username}>
+            <ul>
+              <li><Link to="/settings/account/profile">Profile</Link></li>
+              <li><Link to="/settings/account/security">Security</Link></li>
+              <li><Link to="/settings/account/billing">Billing</Link></li>
+              <li><Link to="/settings/account/referrals">Referrals</Link></li>
+            </ul>
+            <hr />
+            <li>Logout</li>
+          </Dropdown>
         </Navbar.Menu>
       </Navbar.Container>
     </Grid.Container>
