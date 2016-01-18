@@ -11,3 +11,13 @@ export const LOGOUT_SUCCEEDED = `auth.logout.succeeded`;
 export const LOGOUT_FAILED = `auth.logout.failed`;
 
 export const REMOVE_TOKEN = `auth.remove_token`;
+
+export const signInForm = {
+  form: `signIn`,
+  fields: [`email`, `password`],
+};
+
+export const signUpForm = {
+  form: `signUp`,
+  fields: [`email`, `username`, `password`],
+};

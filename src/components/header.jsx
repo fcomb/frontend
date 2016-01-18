@@ -3,9 +3,14 @@ import { Link } from 'react-router';
 
 import UI from 'components/ui';
 import styles from 'styles/ui/navbar';
-const { Navbar, Grid, Dropdown } = UI;
+const { Button, Navbar, Grid, Dropdown } = UI;
 
-export default ({ users }) => (
+const dropdownStyles = {
+  placeholder: styles.dropdownPlaceholder,
+  icon: styles.dropdownIcon,
+};
+
+export default ({ state, actions }) => (
   <header>
     <Grid.Container>
       <Navbar.Container>
@@ -17,15 +22,14 @@ export default ({ users }) => (
         </Navbar.Menu>
 
         <Navbar.Menu right>
-          <Dropdown placeholder={users.me.data.username}>
-            <ul>
-              <li><Link to="/settings/account/profile">Profile</Link></li>
-              <li><Link to="/settings/account/security">Security</Link></li>
-              <li><Link to="/settings/account/billing">Billing</Link></li>
-              <li><Link to="/settings/account/referrals">Referrals</Link></li>
-            </ul>
-            <hr />
-            <li>Logout</li>
+          <Dropdown placeholder={state.users.me.data.username} styles={dropdownStyles}>
+            <Link className={styles.dropdownElement} to="/settings/account/profile">Profile</Link>
+            <Link className={styles.dropdownElement} to="/settings/account/security">Security</Link>
+            <Link className={styles.dropdownElement} to="/settings/account/billing">Billing</Link>
+            <Link className={styles.dropdownElement} to="/settings/account/referrals">Referrals</Link>
+
+            <hr className={styles.dropdownDivider} />
+            <Button onClick={actions.logOut}>Logout</Button>
           </Dropdown>
         </Navbar.Menu>
       </Navbar.Container>

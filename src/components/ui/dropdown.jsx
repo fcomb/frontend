@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import UI from '.';
 import cn from 'classnames';
+import { mixStyles } from './helpers';
 
 export default (styles = {}) => {
   return class extends Component {
@@ -11,42 +12,51 @@ export default (styles = {}) => {
       this.state = {
         isOpen: false,
       };
+
+      this.onClick = ::this.onClick;
     }
 
-    componentDidUpdate(prevProps, prevStates) {
-      if (prevStates.isOpen === this.state.isOpen) {
-        return;
+    componentDidUpdate(prevProps, prevState) {
+      if (prevState.isOpen !== this.state.isOpen) {
+        if (this.state.isOpen) {
+          document.addEventListener(`click`, this.onClick);
+        } else {
+          document.removeEventListener(`click`, this.onClick);
+        }
       }
+    }
 
-      if (this.state.isOpen) {
-        document.addEventListener(`click`, ::this.clickOutside);
-      } else {
-        document.removeEventListener(`click`, ::this.clickOutside);
-      }
+    componentWillUnmount() {
+      document.removeEventListener(`click`, this.onClick);
     }
 
     toggle() {
       this.setState({ isOpen: !this.state.isOpen });
     }
 
-    clickOutside(event) {
-      if (this.state.isOpen && !this.refs.dropdown.contains(event.target)) {
-        this.setState({
-          isOpen: !this.state.isOpen,
-        });
+    onClick(event) {
+      if (!this.refs.dropdown.contains(event.target)) {
+        this.setState({ isOpen: !this.state.isOpen });
       }
     }
 
     render() {
+      const style = mixStyles(styles, this.props.styles);
+      const cns = {
+        dropdown: cn(style.dropdown, { [style.active]: this.props.isOpen || this.state.isOpen }),
+        icon: style.icon,
+        placeholder: style.placeholder,
+        container: style.container,
+      };
+
       return (
-        <div {...this.props} ref="dropdown" className={cn(styles.dropdown, this.props.className)}>
-          <div className={cn(styles.placeholder, { [styles.active]: this.props.isOpen || this.state.isOpen })} onClick={::this.toggle}>
+        <div {...this.props} ref="dropdown" className={cns.dropdown}>
+          <div className={cns.placeholder} onClick={::this.toggle}>
             {this.props.placeholder}
-            &nbsp;
-            <UI.Icon className={styles.icon} icon="chevron-down" />
+            <UI.Icon className={cns.icon} icon="chevron-down" />
           </div>
 
-          <div className={cn(styles.container, { [styles.active]: this.props.isOpen || this.state.isOpen })}>
+          <div className={cns.container}>
             {this.props.children}
           </div>
         </div>

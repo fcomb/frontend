@@ -12,10 +12,23 @@ import { autoRehydrate } from 'redux-persist';
 import { history } from './history';
 import { syncHistory, routeReducer } from 'redux-simple-router';
 
+// redux-form
+import { reducer as formReducer } from 'redux-form';
 import * as localReducers from 'reducers';
 
 const reducers = {
   ...localReducers,
+  form: formReducer.normalize({
+    signUp: {
+      username: (value) => {
+        if (value) {
+          return value && value.replace(/[^a-zA-Z0-9.]/g, ``);  // only letters
+        } else {
+          return undefined;
+        }
+      },
+    },
+  }),
   routing: routeReducer,
 };
 

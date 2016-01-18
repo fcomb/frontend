@@ -13,11 +13,13 @@ const styles = {
 import Modal from './modal';
 import Dropdown from './dropdown';
 import Icon from './icon';
+import Text from './text';
 
 const components = {
   Modal: Modal(styles.modal),
   Dropdown: Dropdown(styles.dropdown),
   Icon: Icon(),
+  Text: Text(),
 };
 
 const UI = ReactUI({

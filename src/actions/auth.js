@@ -1,6 +1,7 @@
 import { api } from 'config/sources';
 import * as types from 'constants/auth';
 import { setHTTPAuth } from 'utils/setHTTPAuth';
+import { loadUser } from './users';
 
 // sign in
 const signInStarted = () => ({
@@ -8,11 +9,10 @@ const signInStarted = () => ({
 });
 
 const signInSucceeded = ({ token }) => {
-  setHTTPAuth(token);
+  return (dispatch) => {
+    setHTTPAuth(token);
 
-  return {
-    type: types.SIGN_IN_SUCCEEDED,
-    token,
+    dispatch(loadUser(`me`)).then(() => dispatch({ type: types.SIGN_IN_SUCCEEDED, token }));
   };
 };
 
@@ -46,13 +46,7 @@ const signUpFailed = ({ errors }) => ({
   errors,
 });
 
-export function signUp({ email, password }) {
-  const user = {
-    email,
-    password,
-    username: email.split(`@`)[0],
-  };
-
+export function signUp(user) {
   return (dispatch) => {
     dispatch(signUpStarted());
 
@@ -65,5 +59,13 @@ export function signUp({ email, password }) {
 export function removeToken() {
   return {
     type: types.REMOVE_TOKEN,
+  };
+}
+
+export function logOut() {
+  return (dispatch) => {
+    return api.del(`sessions`)
+      .catch(() => {})
+      .then(() => dispatch(removeToken()));
   };
 }

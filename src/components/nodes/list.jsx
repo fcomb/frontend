@@ -17,15 +17,16 @@ const { Grid } = UI;
 //   publicIpAddress: `255.255.255.255`,
 //   state: `upgrading`,
 // }];
-
-export default ({ items }) => (
-  <Grid.Container>
-    <Grid.Row>
-      {items.map((node) => (
-        <Grid.Col sm={10} lg={5} key={node.id}>
-          <Card data={node} />
-        </Grid.Col>
-      ))}
-    </Grid.Row>
-  </Grid.Container>
-);
+export default ({ items = [] }) => {
+  return (
+    <Grid.Container>
+      <Grid.Row>
+        {items.map((node) => (
+          <Grid.Col sm={10} lg={5} key={node.id}>
+            <Card data={node} />
+          </Grid.Col>
+        ))}
+      </Grid.Row>
+    </Grid.Container>
+  );
+};

@@ -4,18 +4,29 @@
   position: relative;
   display: inline-block;;
   vertical-align: top;
+
+  &.active {
+    .icon {
+      transform: rotate(-180deg);
+    }
+
+    .container {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 }
 
 .placeholder {
   display: block;
   padding: 1.5rem;
-  min-width: 11rem;
-  font-size: 1.5rem;
+  /*min-width: 11rem;*/
+  /*font-size: 1.5rem;*/
   line-height: 1;
   text-align: left;
-  background-color: $brand-white;
-  border: 1px solid $gray;
-  border-radius: 0.4rem;
+  /*background-color: $brand-white;*/
+  /*border: 1px solid $gray;*/
+  /*border-radius: 0.4rem;*/
   cursor: pointer;
 
   &:focus,
@@ -23,42 +34,33 @@
   &.active {
     border-color: $brand-black;
   }
-
-  &.active {
-    .icon {
-      transform: rotate(180deg);
-    }
-  }
 }
 
 .icon {
-  margin-top: .3rem;
+  margin-top: .2rem;
   margin-left: .4rem;
   float: right;
-  width: 1.5rem;
-  height: 1.1rem;
+  width: 1rem;
+  height: 1rem;
   fill: $brand-black;
   display: inline-block;
+  transition: transform .3s;
 }
 
 .container {
   position: absolute;
-  top: 6.5rem;
+  top: 4rem;
   right: 0;
   z-index: 10;
   display: block;
   min-width: 100%;
-  padding: 2.5rem 0;
+  /*padding: 1.5rem;*/
   text-align: left;
   background-color: $brand-white;
+  box-shadow: 0.5rem 1rem 2rem 0px #DCDBDB;
   border: 1px solid $gray;
   border-radius: 0.4rem;
   overflow-y: scroll;
   visibility: hidden;
   opacity: 0;
-
-  &.active {
-    visibility: visible;
-    opacity: 1;
-  }
 }

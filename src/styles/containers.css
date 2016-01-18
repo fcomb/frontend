@@ -13,25 +13,42 @@
 .section {
   background-color: #fff;
   border-top: 1px solid #eee;
+  padding-bottom: 3rem;
   min-height: 100vh;
 }
 
-.sectionWrapper {
+.sectionPushed {
   margin-top: 5rem;
 }
 
 .sectionInner {
-  margin-top: -5rem;
-}
-
-.online {
-  color: $brand-success;
-}
-
-.offline {
-  color: $brand-danger;
+  margin-top: -1rem;
 }
 
 .textRight {
   text-align: right;
+}
+
+.textCenter {
+  text-align: center;;
+}
+
+.textPrimary {
+  color: $brand-primary;
+}
+
+.pushedTop10 {
+  margin-top: 10rem;
+}
+
+.pushedTop5 {
+  margin-top: 5rem;
+}
+
+.pushedTop3 {
+  margin-top: 3rem;
+}
+
+.helperXs {
+  font-size: 1.1rem;
 }

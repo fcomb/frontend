@@ -7,21 +7,22 @@
 }
 
 .left {
-  flex-grow: 1;
   justify-content: flex-start;
+  flex-grow: 1;
   text-align: start;
 }
 
 .right {
-  flex-grow: 1;
   justify-content: flex-end;
+  flex-grow: 1;
   text-align: end;
 }
 
 .item {
   display: inline-block;
-  padding: 2rem 1.5rem;
+  font-weight: 600;
   color: #9E9E9E;
+  padding: 2rem 1.5rem;
   line-height: 1;
   text-transform: uppercase;
 
@@ -31,20 +32,19 @@
 }
 
 .link {
-  composes: item;
-  font-weight: 600;
-  text-decoration: none;
   cursor: pointer;
-  transition: all .3s;
   border: 0;
+  transition: all .3s;
+  text-decoration: none;
+  composes: item;
 
   &:hover,
   &:focus,
   &:active,
   &.active {
     color: $brand-primary;
-    text-decoration: none;
     outline: none;
+    text-decoration: none;
   }
 
   &.active {
@@ -55,13 +55,39 @@
 }
 
 .static {
-  composes: item;
   margin: 0;
+  composes: item;
 }
 
 .brand {
-  composes: link;
-  text-transform: none;
-  margin-right: 1rem;
   color: $brand-black;
+  margin-right: 1rem;
+  text-transform: none;
+  composes: link;
+}
+
+.dropdownPlaceholder {
+  composes: link;
+}
+
+.dropdownIcon {
+  margin-top: .1rem;
+  margin-left: .4rem;
+  float: right;
+  width: 1.2rem;
+  height: 1rem;
+  fill: $gray-lighter;
+  display: inline-block;
+  transition: transform .3s;
+}
+
+.dropdownElement {
+  display: block;
+  padding: 1rem 1.5rem;
+}
+
+.dropdownDivider {
+  margin: 0 -1.5rem;
+  border-color: $gray;
+  border-style: solid;
 }
