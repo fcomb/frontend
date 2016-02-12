@@ -32,7 +32,10 @@ const reducers = {
   routing: routeReducer,
 };
 
-const logger = createLogger();
+const logger = createLogger({
+  collapsed: true,
+});
+
 const reducer = combineReducers(reducers);
 const routerMiddleware = syncHistory(history);
 
